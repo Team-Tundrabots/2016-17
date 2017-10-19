@@ -93,7 +93,7 @@ public class PushbotAutoDriveByTime_J extends LinearOpMode {
             spinRight(.8,.5);
             moveArm(4,.1);
             runForward(5,0.5);
-            spinRight(.8,.5);
+            spinLeft(.8,.5);
             moveArm(4,-.1);
             sleep(1000);
         }
