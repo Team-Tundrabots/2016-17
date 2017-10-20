@@ -47,7 +47,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Jrayn: Teleop Mecanum", group="Jrayn")
+@TeleOp(name="Jrayn: Teleop Mecanum Wheel Version", group="Jrayn")
 //@Disabled
 public class Jrayn_C_MechanumWheelV extends OpMode{
 
