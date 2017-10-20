@@ -55,7 +55,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 public class Jrayn_C extends OpMode{
 
     /* Declare OpMode members. */
-    HardwareJrayn robot       = new HardwareJrayn(); // use the class created to define a Pushbot's hardware
+    Hardwarejrayn robot       = new Hardwarejrayn(); // use the class created to define a Pushbot's hardware
                                                          // could also use HardwarePushbotMatrix class.
 
     /*

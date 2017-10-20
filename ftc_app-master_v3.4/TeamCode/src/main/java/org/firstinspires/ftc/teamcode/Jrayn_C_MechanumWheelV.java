@@ -52,7 +52,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class Jrayn_C_MechanumWheelV extends OpMode{
 
     /* Declare OpMode members. */
-    HardwareJrayn robot       = new HardwareJrayn(); // use the class created to define a Pushbot's hardware
+    Hardwarejrayn robot       = new Hardwarejrayn(); // use the class created to define a Pushbot's hardware
                                                          // could also use HardwarePushbotMatrix class.
 
     /*
