@@ -68,7 +68,7 @@ public class jryan_teleop extends OpMode{
         robot.init(hardwareMap);
 
         // Send telemetry message to signify robot waiting;
-        telemetry.addData("Say", "Hello Driver");    //
+        telemetry.addData("Say", "cyborg-159762 reporting for duty");    //
     }
 
     /*
