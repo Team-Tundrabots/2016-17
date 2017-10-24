@@ -47,7 +47,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="jrayn_teleop3", group="Pushbo")
+@TeleOp(name="Cleates2_Teleop", group="Pushbo")
 //@Disabled
 public class Cleates2_teleop extends OpMode{
 
