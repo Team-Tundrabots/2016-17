@@ -57,6 +57,7 @@ public class Hardwarejrayn
     public DcMotor  rightDrive  = null;
     public DcMotor  leftDrive2  = null;
     public DcMotor  rightDrive2 = null;
+    public Servo    glyphManip = null;
 
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
@@ -90,6 +91,10 @@ public class Hardwarejrayn
         rightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         leftDrive2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightDrive2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        glyphManip  = hwMap.get(Servo.class, "glyph_manip");
+        glyphManip.setPosition(0.5);
+
     }
  }
 

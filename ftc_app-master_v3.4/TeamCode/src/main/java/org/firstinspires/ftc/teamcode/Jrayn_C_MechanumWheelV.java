@@ -96,6 +96,15 @@ public class Jrayn_C_MechanumWheelV extends OpMode{
         left = -gamepad1.left_stick_y;
         right = -gamepad1.right_stick_y;
 
+        if (gamepad1.dpad_down)
+        {
+            robot.glyphManip.setPosition(1);
+        }
+        else if (gamepad1.dpad_up)
+        {
+            robot.glyphManip.setPosition(0);
+        }
+
         double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
         double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x) - Math.PI / 4;
         double rightX = gamepad1.right_stick_x;
