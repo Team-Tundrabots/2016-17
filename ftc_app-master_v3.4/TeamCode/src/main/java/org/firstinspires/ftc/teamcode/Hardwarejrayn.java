@@ -57,6 +57,7 @@ public class Hardwarejrayn
     public DcMotor  rightDrive  = null;
     public DcMotor  leftDrive2  = null;
     public DcMotor  rightDrive2 = null;
+    public Servo    glyphManip = null;
 
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
@@ -87,6 +88,10 @@ public class Hardwarejrayn
         rightDrive.setPower(0);
         leftDrive2.setPower(0);
         rightDrive2.setPower(0);
+
+        //glyph manipulator
+        glyphManip  = hwMap.get(Servo.class, "glyph_manip");
+        glyphManip.setPosition(0.5);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.

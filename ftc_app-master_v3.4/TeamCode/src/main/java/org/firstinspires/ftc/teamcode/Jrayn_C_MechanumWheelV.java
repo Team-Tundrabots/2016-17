@@ -109,6 +109,15 @@ public class Jrayn_C_MechanumWheelV extends OpMode{
         robot.leftDrive2.setPower(v3);
         robot.rightDrive2.setPower(v4);
 
+        if (gamepad1.b)
+            robot.glyphManip.setPosition(1);
+        else if (gamepad1.a)
+            robot.glyphManip.setPosition(-1);
+        else
+            robot.glyphManip.setPosition(0);
+
+
+
 
         // Send telemetry message to signify robot running;
         telemetry.addData("left",  "%.2f", left);
