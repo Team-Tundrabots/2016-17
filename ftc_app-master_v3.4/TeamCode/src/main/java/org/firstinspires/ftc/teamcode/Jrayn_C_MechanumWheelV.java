@@ -109,10 +109,11 @@ public class Jrayn_C_MechanumWheelV extends OpMode{
         robot.leftDrive2.setPower(v3);
         robot.rightDrive2.setPower(v4);
 
-        if (gamepad1.b)
-            robot.glyphManip.setPosition(1);
+        //
+        if (gamepad1.y)
+            robot.glyphManip.setPosition(0.45);
         else if (gamepad1.a)
-            robot.glyphManip.setPosition(-1);
+            robot.glyphManip.setPosition(-0.45);
         else
             robot.glyphManip.setPosition(0);
 
