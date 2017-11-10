@@ -40,6 +40,7 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.hardware.Camera;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.net.wifi.WifiManager;
@@ -52,6 +53,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -212,6 +214,26 @@ public class FtcRobotControllerActivity extends Activity
       }
     }
   }
+    public void initPreviewLinear(final Camera camera, final CameraProcessor context, final Camera.PreviewCallback previewCallback) {
+      runOnUiThread(new Runnable() {
+        @Override
+        public void run() {
+          context.preview = new for_camera_opmodes.CameraPreview(FtcRobotControllerActivity.this, camera, previewCallback);
+          FrameLayout previewLayout = (FrameLayout) findViewById(R.id.cameraPreview);
+          previewLayout.addView(context.preview);
+        }
+      });
+    }
+
+    public void removePreviewLinear(final CameraProcessor context) {
+      runOnUiThread(new Runnable() {
+        @Override
+        public void run() {
+          FrameLayout previewLayout = (FrameLayout) findViewById(R.id.cameraPreview);
+          previewLayout.removeAllViews();
+        }
+      });
+    }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

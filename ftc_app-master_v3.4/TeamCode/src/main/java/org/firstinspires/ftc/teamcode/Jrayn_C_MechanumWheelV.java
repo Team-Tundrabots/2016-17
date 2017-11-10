@@ -96,6 +96,7 @@ public class Jrayn_C_MechanumWheelV extends OpMode{
         left = -gamepad1.left_stick_y;
         right = -gamepad1.right_stick_y;
 
+
         double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
         double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x) - Math.PI / 4;
         double rightX = gamepad1.right_stick_x;
@@ -108,6 +109,13 @@ public class Jrayn_C_MechanumWheelV extends OpMode{
         robot.rightDrive.setPower(v2);
         robot.leftDrive2.setPower(v3);
         robot.rightDrive2.setPower(v4);
+
+        if (gamepad1.a)
+            robot.liftMotor.setPower(robot.ARM_UP_POWER);
+        else if (gamepad1.b)
+            robot.liftMotor.setPower(robot.ARM_DOWN_POWER);
+        else
+            robot.liftMotor.setPower(0.0);
 
 
         // Send telemetry message to signify robot running;
