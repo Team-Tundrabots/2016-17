@@ -35,29 +35,31 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-
-public class SimpleBot
-{
+public class SimpleBot {
     /* Public OpMode members. */
-    public DcMotor  leftDrive   = null;
-    public DcMotor  rightDrive  = null;
+    public DcMotor leftDrive = null;
+    public DcMotor rightDrive = null;
 
-    public DcMotor  leftDrive2   = null;
-    public DcMotor  rightDrive2  = null;
+    public DcMotor leftDrive2 = null;
+    public DcMotor rightDrive2 = null;
 
-    public Servo    leftClaw    = null;
-    public Servo    rightClaw   = null;
+    public DcMotor leftArm = null;
+
+    public Servo leftClaw = null;
+    public Servo rightClaw = null;
 
 
     /* local OpMode members. */
-    HardwareMap hwMap           =  null;
-    Telemetry telemetry         =  null;
+    HardwareMap hwMap = null;
+    Telemetry telemetry = null;
+    LinearOpMode opMode = null;
 
-    private ElapsedTime period  = new ElapsedTime();
+    private ElapsedTime period = new ElapsedTime();
 
     /* Constructor */
-    public SimpleBot(){
+    public SimpleBot() {
 
     }
 
@@ -65,6 +67,10 @@ public class SimpleBot
         telemetry = atelemetry;
     }
 
+    public SimpleBot(Telemetry atelemetry, LinearOpMode aOpMode) {
+        this(atelemetry);
+        opMode = aOpMode;
+    }
 
     /* Initialize standard Hardware interfaces */
     public void init(HardwareMap ahwMap) {
@@ -78,8 +84,10 @@ public class SimpleBot
         leftDrive2 = initMotor(hwMap, "left_drive1");
         rightDrive2 = initMotor(hwMap, "right_drive2");
 
+        leftArm = initMotor(hwMap, "left_arm");
+
         // Define and initialize ALL installed servos.
-        leftClaw  = initServo(hwMap, "left_claw");
+        leftClaw = initServo(hwMap, "left_claw");
         rightClaw = initServo(hwMap, "right_claw");
     }
 
@@ -88,7 +96,7 @@ public class SimpleBot
         hwMap = ahwMap;
     }
 
-    public HardwareMap getHwMap(){
+    public HardwareMap getHwMap() {
         return hwMap;
     }
 
@@ -105,7 +113,7 @@ public class SimpleBot
             motor.setPower(0);
             motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-            return(motor);
+            return (motor);
 
         } catch (IllegalArgumentException err) {
             if (telemetry != null) {
@@ -129,5 +137,78 @@ public class SimpleBot
             return null;
         }
     }
- }
+
+    public void updateMotorsTankDrive(double leftY, double rightY) {
+
+        double left;
+        double right;
+
+        // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
+        left = -leftY;
+        right = -rightY;
+
+        setLeftMotorsPower(left);
+        setRightMotorsPower(right);
+
+    }
+
+    public void move(double seconds, double leftPower, double rightPower) {
+
+        ElapsedTime runtime = new ElapsedTime();
+
+        setLeftMotorsPower(leftPower);
+        setRightMotorsPower(rightPower);
+
+        runtime.reset();
+        while(opMode.opModeIsActive() && (runtime.seconds() < seconds)) {
+            telemetry.addData("Path", "Time: %2.5f S Elapsed", runtime.seconds());
+            telemetry.update();
+        }
+        setLeftMotorsPower(0.0);
+        setRightMotorsPower(0.0);
+
+    }
+
+    public void moveForward(double seconds, double power)
+    {
+        move(seconds,power, power);
+    }
+
+    public void moveBackward(double seconds, double power)
+    {
+        // move forwards with negative power
+        move(seconds, -power, -power);
+    }
+
+    public void turnLeft(double seconds, double power) {
+        move(seconds, -power, power);
+    }
+
+    public void turnRight(double seconds, double power) {
+        move(seconds, power, -power);
+    }
+
+    public void wait(double seconds) {
+        long milliseconds = (long)seconds * 1000;
+        opMode.sleep(milliseconds);
+    }
+
+    public void setLeftMotorsPower(double power){
+        if (leftDrive != null) {
+            leftDrive.setPower(power);
+        }
+        if (leftDrive2 != null) {
+            leftDrive2.setPower(power);
+        }
+    }
+
+    public void setRightMotorsPower(double power){
+        if (rightDrive != null) {
+            rightDrive.setPower(power);
+        }
+        if (rightDrive2 != null) {
+            rightDrive2.setPower(power);
+        }
+    }
+}
 

@@ -47,17 +47,19 @@ public class SimpleBot_Drive extends OpMode{
     @Override
     public void loop() {
 
-        // Run wheels in tank mode (note: The joystick goes negative when pushed forwards, so negate it)
-        double left = -gamepad1.left_stick_y;
-        double right = -gamepad1.right_stick_y;
 
-        robot.leftDrive.setPower(left);
-        robot.rightDrive.setPower(right);
+        double leftX = gamepad1.left_stick_x;
+        double leftY = gamepad1.left_stick_y;
+        double rightX = gamepad1.right_stick_x;
+        double rightY = gamepad1.right_stick_y;
+
+        robot.updateMotorsTankDrive(leftY, rightY);
 
         // Send telemetry message to signify robot running;
-        telemetry.addData("left",  "%.2f", left);
-        telemetry.addData("Right", "%.2f", right);
-    }
+        telemetry.addData("leftX",  "%.2f", leftX);
+        telemetry.addData("leftY",  "%.2f", leftY);
+        telemetry.addData("rightX", "%.2f", rightX);
+        telemetry.addData("rightY", "%.2f", rightY);    }
 
     /*
      * Code to run ONCE after the driver hits STOP

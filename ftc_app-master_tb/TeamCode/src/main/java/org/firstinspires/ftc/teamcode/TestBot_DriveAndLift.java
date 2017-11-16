@@ -1,17 +1,17 @@
 
 
-package org.firstinspires.ftc.teamcode.mechanum;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 
-@TeleOp(name="MechanumBot: Drive", group="mechanum")
+@TeleOp(name="TestBot: DriveAndLift", group="test")
 
-public class MechanumBot_Drive extends OpMode{
+public class TestBot_DriveAndLift extends OpMode{
 
     /* Declare OpMode members. */
-    MechanumBot robot       = new MechanumBot(telemetry);
+    TestBot robot       = new TestBot(telemetry);
 
     /*
      * Code to run ONCE when the driver hits INIT
@@ -52,12 +52,29 @@ public class MechanumBot_Drive extends OpMode{
         double rightX = -gamepad1.right_stick_x;
         double rightY = -gamepad1.right_stick_y;
 
-        robot.updateMotorsMechanumDrive(leftX, leftY, rightX, rightY);
+        // if tank drive
+        robot.updateMotorsTankDrive(leftY, rightY);
+
+        // if mechanum drive...
+        //robot.updateMotorsMechanumDrive(leftX, leftY, rightX, rightY);
 
         telemetry.addData("leftX",  "%.2f", leftX);
         telemetry.addData("leftY",  "%.2f", leftY);
         telemetry.addData("rightX", "%.2f", rightX);
         telemetry.addData("rightY", "%.2f", rightY);
+
+        // move arm up if a button pushed
+        if(gamepad1.a){
+            robot.leftArm.setPower(.5);
+
+        // move arm down if b button pushed
+        } else if(gamepad1.b){
+            robot.leftArm.setPower(-0.5);
+
+        // if neither button pushed, stop arm
+        } else {
+            robot.leftArm.setPower(0);
+        }
     }
 
     /*

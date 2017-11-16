@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 
-@TeleOp(name="TestBot: Drive", group="mechanum")
+@TeleOp(name="TestBot: Drive", group="test")
 
 public class TestBot_Drive extends OpMode{
 
@@ -52,13 +52,16 @@ public class TestBot_Drive extends OpMode{
         double rightX = -gamepad1.right_stick_x;
         double rightY = -gamepad1.right_stick_y;
 
-        robot.updateMotors(leftX, leftY, rightX, rightY);
+        // if tank drive
+        robot.updateMotorsTankDrive(leftY, rightY);
+
+        // if mechanum drive...
+        //robot.updateMotorsMechanumDrive(leftX, leftY, rightX, rightY);
 
         telemetry.addData("leftX",  "%.2f", leftX);
         telemetry.addData("leftY",  "%.2f", leftY);
         telemetry.addData("rightX", "%.2f", rightX);
         telemetry.addData("rightY", "%.2f", rightY);
-
 
     }
 

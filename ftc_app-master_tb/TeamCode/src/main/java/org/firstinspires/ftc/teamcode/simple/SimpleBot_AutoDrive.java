@@ -27,61 +27,47 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode.mechanum;
+package org.firstinspires.ftc.teamcode.simple;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.simple.SimpleBot;
+import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 
 
-public class MechanumBot extends SimpleBot
-{
-    /* Public OpMode members. */
-    public DcMotor  newMotor    = null;
-    public Servo    newServo    = null;
+@Autonomous(name="SimpleBot: AutoDrive", group="simple")
+//@Disabled
+public class SimpleBot_AutoDrive extends LinearOpMode {
 
-    public MechanumBot(Telemetry atelemetry) {
-        super(atelemetry);
+    /* Declare OpMode members. */
+    SimpleBot  robot   = new SimpleBot(telemetry, this);
+
+    @Override
+    public void runOpMode() {
+
+        robot.init(hardwareMap);
+
+        // Send telemetry message to signify robot waiting;
+        telemetry.addData("Status", "Ready to run");    //
+        telemetry.update();
+
+        // Wait for the game to start (driver presses PLAY)
+        waitForStart();
+
+        double forwardPower = 0.6;
+        double turnPower = 0.3;
+
+        for (int i = 0; i < 4; i++) {
+            robot.moveForward(1.0, forwardPower);
+            robot.wait(1.0); // wait for 1 second
+            robot.turnLeft(0.5, turnPower);
+            robot.wait(1.0); // wait for 1 second
+        }
+
+        telemetry.addData("Path", "Complete");
+        telemetry.update();
+        sleep(1000);
     }
-
-    /* Initialize standard Hardware interfaces */
-    public void init(HardwareMap hwMap) {
-
-        // Save reference to Hardware map
-        super.init(hwMap);
-
-        // Define and Initialize Motors
-        newMotor = initMotor(hwMap, "new_motor");
-
-        // Define and initialize ALL installed servos.
-        newServo  = initServo(hwMap, "new_servo");
-    }
-
-    public void updateMotorsMechanumDrive(double leftX, double leftY, double rightX, double rightY) {
-
-        // reverse all coordinates
-        double lX = -leftX;
-        double lY = -leftY;
-        double rX = -rightX;
-        double rY = -rightY;
-
-        double r = Math.hypot(lX, lY);
-        double robotAngle = Math.atan2(lY, lX) - Math.PI / 4;
-
-        final double v1 = r * Math.cos(robotAngle) + rX;
-        final double v2 = r * Math.sin(robotAngle) - rX;
-        final double v3 = r * Math.sin(robotAngle) + rX;
-        final double v4 = r * Math.cos(robotAngle) - rX;
-
-        leftDrive.setPower(v1);
-        rightDrive.setPower(v2);
-        leftDrive2.setPower(v3);
-        rightDrive2.setPower(v4);
-
-    }
-
- }
-
+}

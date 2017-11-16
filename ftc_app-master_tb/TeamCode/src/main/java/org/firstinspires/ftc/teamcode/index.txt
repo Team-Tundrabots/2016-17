@@ -31,5 +31,5 @@ OpMode - Description
 ----------------------------------------------------------------------------------------------------
 SimpleBot_Drive - drives tank mode
 MechanumBot_Drive - drives mechanum wheels
-TestBot_Drive - drives mechanum wheels + ?
-
+TestBot_Drive - drives mechanum wheels (or tank mode)
+TestBot_DriveAndLift - drives + single arm lift
