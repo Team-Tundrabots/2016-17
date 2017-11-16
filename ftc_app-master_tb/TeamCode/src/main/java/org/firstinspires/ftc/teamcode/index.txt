@@ -1,0 +1,35 @@
+====================================================================================================
+==== Naming Conventions
+====================================================================================================
+
+Hardware Class: RobotNameBot            Config File (on phone): RobotNameBot
+
+Component Name: motorName               Config Name (on phone): motor_name
+                servoName                                       servo_name
+
+OpMode Class:   RobotNameBot_Action     Config Name: name="RobotNameBot: Action", group="base class"
+
+
+====================================================================================================
+==== List ALL Robot Classes Here
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+Robot Name  | Extends  | Components
+----------------------------------------------------------------------------------------------------
+SimpleBot / None / left_drive, left_drive2, right_drive, right_drive2
+MechanumBot / SimpleBot / SimpleBot / new_motor, new_servo
+TestBot / MechanumBot / fancy_motor, fancy_servo
+
+
+====================================================================================================
+==== List ALL OpMode Classes Here
+====================================================================================================
+
+----------------------------------------------------------------------------------------------------
+OpMode - Description
+----------------------------------------------------------------------------------------------------
+SimpleBot_Drive - drives tank mode
+MechanumBot_Drive - drives mechanum wheels
+TestBot_Drive - drives mechanum wheels (or tank mode)
+TestBot_DriveAndLift - drives + single arm lift
