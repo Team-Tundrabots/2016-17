@@ -4,6 +4,7 @@ package org.firstinspires.ftc.teamcode.simple;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.util.Range;
 
 
 @TeleOp(name="SimpleBot: Drive", group="simple")
@@ -12,6 +13,9 @@ public class SimpleBot_Drive extends OpMode{
 
     /* Declare OpMode members. */
     SimpleBot robot       = new SimpleBot(telemetry);
+
+    double          clawOffset      = 0;                       // Servo mid position
+    final double    CLAW_SPEED      = 0.02 ;                   // sets rate to move servo
 
     /*
      * Code to run ONCE when the driver hits INIT
@@ -56,10 +60,20 @@ public class SimpleBot_Drive extends OpMode{
         robot.updateMotorsTankDrive(leftY, rightY);
 
         // Send telemetry message to signify robot running;
-        telemetry.addData("leftX",  "%.2f", leftX);
-        telemetry.addData("leftY",  "%.2f", leftY);
+        telemetry.addData("leftX", "%.2f", leftX);
+        telemetry.addData("leftY", "%.2f", leftY);
         telemetry.addData("rightX", "%.2f", rightX);
-        telemetry.addData("rightY", "%.2f", rightY);    }
+        telemetry.addData("rightY", "%.2f", rightY);
+
+        // Use dpad to open and close the claw
+        if (gamepad1.dpad_up)
+            clawOffset += CLAW_SPEED;
+        else if (gamepad1.dpad_down)
+            clawOffset -= CLAW_SPEED;
+
+        robot.moveClaws(clawOffset);
+
+    }
 
     /*
      * Code to run ONCE after the driver hits STOP

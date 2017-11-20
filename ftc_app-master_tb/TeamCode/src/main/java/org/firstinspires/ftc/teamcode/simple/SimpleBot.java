@@ -30,12 +30,14 @@
 package org.firstinspires.ftc.teamcode.simple;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.util.Range;
 
 public class SimpleBot {
     /* Public OpMode members. */
@@ -79,10 +81,10 @@ public class SimpleBot {
 
         // Define and Initialize Motors
         leftDrive = initMotor(hwMap, "left_drive");
-        rightDrive = initMotor(hwMap, "right_drive");
+        rightDrive = initMotor(hwMap, "right_drive", DcMotor.Direction.REVERSE);
 
-        leftDrive2 = initMotor(hwMap, "left_drive1");
-        rightDrive2 = initMotor(hwMap, "right_drive2");
+        leftDrive2 = initMotor(hwMap, "left_drive2");
+        rightDrive2 = initMotor(hwMap, "right_drive2", DcMotor.Direction.REVERSE);
 
         leftArm = initMotor(hwMap, "left_arm");
 
@@ -105,11 +107,15 @@ public class SimpleBot {
     }
 
     public DcMotor initMotor(HardwareMap ahwMap, String motorName) {
+        return(initMotor(ahwMap, motorName, DcMotor.Direction.FORWARD));
+    }
+
+    public DcMotor initMotor(HardwareMap ahwMap, String motorName, DcMotorSimple.Direction direction) {
 
         try {
             DcMotor motor = ahwMap.get(DcMotor.class, motorName);
 
-            motor.setDirection(DcMotor.Direction.FORWARD);
+            motor.setDirection(direction);
             motor.setPower(0);
             motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
@@ -149,6 +155,14 @@ public class SimpleBot {
 
         setLeftMotorsPower(left);
         setRightMotorsPower(right);
+
+    }
+
+    public void moveClaws(double clawOffset) {
+        // Move both servos to new position.  Assume servos are mirror image of each other.
+        clawOffset = Range.clip(clawOffset, -0.5, 0.5);
+        leftClaw.setPosition(0.5 + clawOffset);
+        rightClaw.setPosition(0.5 - clawOffset);
 
     }
 

@@ -17,7 +17,7 @@ OpMode Class:   RobotNameBot_Action     Config Name: name="RobotNameBot: Action"
 ----------------------------------------------------------------------------------------------------
 Robot Name  | Extends  | Components
 ----------------------------------------------------------------------------------------------------
-SimpleBot / None / left_drive, left_drive2, right_drive, right_drive2
+SimpleBot / None / left_drive, left_drive2, right_drive, right_drive2, left_arm, left_claw, right_claw
 MechanumBot / SimpleBot / SimpleBot / new_motor, new_servo
 TestBot / MechanumBot / fancy_motor, fancy_servo
 
@@ -29,7 +29,8 @@ TestBot / MechanumBot / fancy_motor, fancy_servo
 ----------------------------------------------------------------------------------------------------
 OpMode - Description
 ----------------------------------------------------------------------------------------------------
-SimpleBot_Drive - drives tank mode
+SimpleBot_Drive - drives tank mode + open / close claw
 MechanumBot_Drive - drives mechanum wheels
+TestBot_AutoDrive - move forward and turn left 4 times
 TestBot_Drive - drives mechanum wheels (or tank mode)
 TestBot_DriveAndLift - drives + single arm lift
