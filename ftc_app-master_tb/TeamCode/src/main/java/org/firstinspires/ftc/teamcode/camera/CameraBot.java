@@ -27,7 +27,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.camera;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -37,34 +37,44 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.mechanum.MechanumBot;
 
+import for_camera_opmodes.OpModeCamera;
+import sample_camera_opmodes.DetectColor;
 
-public class TestBot extends MechanumBot
+
+public class CameraBot extends MechanumBot
 {
-    /* Public OpMode members. */
-    //   public DcMotor  newMotor    = null;
-    //   public Servo    newServo    = null;
 
-    public TestBot(Telemetry atelemetry) {
+    DetectColor cameraOp;
+
+    public CameraBot(Telemetry atelemetry) {
         super(atelemetry);
+        cameraOp = new DetectColor();
+        cameraOp.telemetry = atelemetry;
     }
-    public TestBot(Telemetry atelemetry, LinearOpMode aOpMode) {
+
+    public CameraBot(Telemetry atelemetry, LinearOpMode aOpMode) {
         super(atelemetry, aOpMode);
+        cameraOp = new DetectColor();
+        cameraOp.telemetry = atelemetry;
     }
 
-    /* Initialize standard Hardware interfaces */
-    public void init(HardwareMap hwMap) {
-
-        // Save reference to Hardware map
+    public void init(HardwareMap hwMap){
         super.init(hwMap);
-
-        // Define and Initialize Motors
-        // newMotor = initMotor(hwMap, "new_motor");
-
-        // Define and initialize ALL installed servos.
-        // newServo = initServo(hwMap, "new_servo");
-
+        cameraOp.hardwareMap = hwMap;
     }
 
+    public void initCamera(){
+        cameraOp.init();
+    }
 
+    public void stopCamera(){
+        cameraOp.stop();
+    }
+
+    public void checkCamera(){
+        cameraOp.loop();
+    }
+
+    public String getColorFromCamera() {return(cameraOp.getColorFromCamera());}
  }
 

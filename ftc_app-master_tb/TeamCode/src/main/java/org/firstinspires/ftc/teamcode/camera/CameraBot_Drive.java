@@ -1,17 +1,21 @@
 
 
-package org.firstinspires.ftc.teamcode.mechanum;
+package org.firstinspires.ftc.teamcode.camera;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.teamcode.simple.SimpleBot;
 
-@TeleOp(name="MechanumBot: Drive", group="mechanum")
+import sample_camera_opmodes.DetectColor;
 
-public class MechanumBot_Drive extends OpMode{
+
+@TeleOp(name="CameraBot: Drive", group="camera")
+
+public class CameraBot_Drive extends OpMode{
 
     /* Declare OpMode members. */
-    MechanumBot robot       = new MechanumBot(telemetry);
+    CameraBot robot    = new CameraBot(telemetry);
 
     /*
      * Code to run ONCE when the driver hits INIT
@@ -32,6 +36,7 @@ public class MechanumBot_Drive extends OpMode{
      */
     @Override
     public void init_loop() {
+
     }
 
     /*
@@ -39,6 +44,7 @@ public class MechanumBot_Drive extends OpMode{
      */
     @Override
     public void start() {
+        robot.initCamera();
     }
 
     /*
@@ -47,17 +53,22 @@ public class MechanumBot_Drive extends OpMode{
     @Override
     public void loop() {
 
+
         double leftX = gamepad1.left_stick_x;
         double leftY = gamepad1.left_stick_y;
         double rightX = gamepad1.right_stick_x;
         double rightY = gamepad1.right_stick_y;
 
-        robot.updateMotorsMechanumDrive(leftX, leftY, rightX, rightY);
+        robot.updateMotorsTankDrive(leftY, rightY);
 
-        telemetry.addData("leftX",  "%.2f", leftX);
-        telemetry.addData("leftY",  "%.2f", leftY);
+        // Send telemetry message to signify robot running;
+        telemetry.addData("leftX", "%.2f", leftX);
+        telemetry.addData("leftY", "%.2f", leftY);
         telemetry.addData("rightX", "%.2f", rightX);
         telemetry.addData("rightY", "%.2f", rightY);
+
+        robot.checkCamera();
+
     }
 
     /*
@@ -65,5 +76,6 @@ public class MechanumBot_Drive extends OpMode{
      */
     @Override
     public void stop() {
+        robot.stopCamera();
     }
 }

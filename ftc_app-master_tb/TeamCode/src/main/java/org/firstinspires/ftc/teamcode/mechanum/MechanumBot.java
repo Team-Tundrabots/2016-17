@@ -29,6 +29,7 @@
 
 package org.firstinspires.ftc.teamcode.mechanum;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -40,11 +41,14 @@ import org.firstinspires.ftc.teamcode.simple.SimpleBot;
 public class MechanumBot extends SimpleBot
 {
     /* Public OpMode members. */
-    public DcMotor  newMotor    = null;
-    public Servo    newServo    = null;
+ //   public DcMotor  newMotor    = null;
+ //   public Servo    newServo    = null;
 
     public MechanumBot(Telemetry atelemetry) {
         super(atelemetry);
+    }
+    public MechanumBot(Telemetry atelemetry, LinearOpMode aOpMode) {
+        super(atelemetry, aOpMode);
     }
 
     /* Initialize standard Hardware interfaces */
@@ -54,10 +58,11 @@ public class MechanumBot extends SimpleBot
         super.init(hwMap);
 
         // Define and Initialize Motors
-        newMotor = initMotor(hwMap, "new_motor");
+        // newMotor = initMotor(hwMap, "new_motor");
 
         // Define and initialize ALL installed servos.
-        newServo  = initServo(hwMap, "new_servo");
+        // newServo = initServo(hwMap, "new_servo");
+
     }
 
     public void updateMotorsMechanumDrive(double leftX, double leftY, double rightX, double rightY) {
