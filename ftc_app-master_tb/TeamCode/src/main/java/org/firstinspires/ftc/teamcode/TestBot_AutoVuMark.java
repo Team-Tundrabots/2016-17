@@ -74,7 +74,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 public class TestBot_AutoVuMark extends LinearOpMode {
 
     /* Declare OpMode members. */
-    SimpleBot  robot   = new SimpleBot(telemetry, this);
+    TestBot  robot   = new TestBot(telemetry, this);
 
     public static final String TAG = "Vuforia VuMark Sample";
 

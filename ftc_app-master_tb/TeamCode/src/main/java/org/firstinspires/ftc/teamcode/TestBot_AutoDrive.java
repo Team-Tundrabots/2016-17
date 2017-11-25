@@ -40,7 +40,7 @@ import org.firstinspires.ftc.teamcode.simple.SimpleBot;
 public class TestBot_AutoDrive extends LinearOpMode {
 
     /* Declare OpMode members. */
-    SimpleBot  robot   = new SimpleBot(telemetry, this);
+    TestBot  robot   = new TestBot(telemetry, this);
 
     @Override
     public void runOpMode() {
