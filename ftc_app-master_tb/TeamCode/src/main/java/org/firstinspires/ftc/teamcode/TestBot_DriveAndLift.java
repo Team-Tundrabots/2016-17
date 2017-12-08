@@ -55,10 +55,10 @@ public class TestBot_DriveAndLift extends OpMode{
         double rightY = -gamepad1.right_stick_y;
 
         // if tank drive
-        robot.updateMotorsTankDrive(leftY, rightY);
+        //robot.updateMotorsTankDrive(leftY, rightY);
 
         // if mechanum drive...
-        //robot.updateMotorsMechanumDrive(leftX, leftY, rightX, rightY);
+        robot.updateMotorsMechanumDrive(leftX, leftY, rightX, rightY);
 
         telemetry.addData("leftX",  "%.2f", leftX);
         telemetry.addData("leftY",  "%.2f", leftY);

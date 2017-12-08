@@ -83,7 +83,7 @@ public class MechanumBot extends SimpleBot
 
         leftDrive.setPower(v1);
         rightDrive.setPower(v2);
-        leftDrive2.setPower(v3);
+        leftDrive2.setPower(-v3);
         rightDrive2.setPower(v4);
 
     }
