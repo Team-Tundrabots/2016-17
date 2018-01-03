@@ -53,6 +53,8 @@ public class TestBot_DriveAndLift extends OpMode{
         double leftY = -gamepad1.left_stick_y;
         double rightX = -gamepad1.right_stick_x;
         double rightY = -gamepad1.right_stick_y;
+        double p = 0;
+        double z = 0;
 
         // if tank drive
         robot.updateMotorsTankDrive(leftY, rightY);
@@ -64,19 +66,31 @@ public class TestBot_DriveAndLift extends OpMode{
         telemetry.addData("leftY",  "%.2f", leftY);
         telemetry.addData("rightX", "%.2f", rightX);
         telemetry.addData("rightY", "%.2f", rightY);
+        telemetry.addData("leftClaw", "%.2f", robot.leftClaw.getPosition());
 
-        // move arm up if a button pushed
-        if(gamepad1.a){
+        // move lift up if a button pushed
+        if(gamepad1.right_trigger > 0.5){
             robot.leftArm.setPower(.5);
 
-        // move arm down if b button pushed
-        } else if(gamepad1.b){
+        // move lift down if b button pushed
+        } else if(gamepad1.left_trigger > 0.5){
             robot.leftArm.setPower(-0.5);
 
-        // if neither button pushed, stop arm
+        // if neither button pushed, stop lift
         } else {
             robot.leftArm.setPower(0);
         }
+
+        // move jewl bar up if a button is pushed
+        if(gamepad1.a) {
+            robot.leftClaw.setPosition(z);
+            z = z + 0.1;
+            robot.leftClaw.getPosition();
+        }else if(gamepad1.b) {
+            robot.leftClaw.setPosition(p);
+            p = p + 0.1;
+        }
+
     }
 
     /*
