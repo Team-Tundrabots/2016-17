@@ -49,10 +49,10 @@ public class TestBot_DriveAndLift extends OpMode{
     @Override
     public void loop() {
 
-        double leftX = -gamepad1.left_stick_x;
-        double leftY = -gamepad1.left_stick_y;
-        double rightX = -gamepad1.right_stick_x;
-        double rightY = -gamepad1.right_stick_y;
+        double leftX = gamepad1.left_stick_x;
+        double leftY = gamepad1.left_stick_y;
+        double rightX = gamepad1.right_stick_x;
+        double rightY = gamepad1.right_stick_y;
 
         // if tank drive
         robot.updateMotorsTankDrive(leftY, rightY);
@@ -66,11 +66,11 @@ public class TestBot_DriveAndLift extends OpMode{
         telemetry.addData("rightY", "%.2f", rightY);
 
         // move arm up if a button pushed
-        if(gamepad1.a){
+        if(gamepad1.right_trigger > 0){
             robot.leftArm.setPower(.5);
 
         // move arm down if b button pushed
-        } else if(gamepad1.b){
+        } else if(gamepad1.left_trigger > 0){
             robot.leftArm.setPower(-0.5);
 
         // if neither button pushed, stop arm
