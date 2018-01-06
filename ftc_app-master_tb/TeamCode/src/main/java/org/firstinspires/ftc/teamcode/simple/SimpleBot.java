@@ -80,11 +80,11 @@ public class SimpleBot {
         hwMap = ahwMap;
 
         // Define and Initialize Motors
-        leftDrive = initMotor(hwMap, "left_drive");
-        rightDrive = initMotor(hwMap, "right_drive", DcMotor.Direction.REVERSE);
+        leftDrive = initMotor(hwMap, "left_drive", DcMotor.Direction.REVERSE);
+        rightDrive = initMotor(hwMap, "right_drive");
 
-        leftDrive2 = initMotor(hwMap, "left_drive2");
-        rightDrive2 = initMotor(hwMap, "right_drive2", DcMotor.Direction.REVERSE);
+        leftDrive2 = initMotor(hwMap, "left_drive2", DcMotor.Direction.REVERSE);
+        rightDrive2 = initMotor(hwMap, "right_drive2");
 
         leftArm = initMotor(hwMap, "left_arm");
 

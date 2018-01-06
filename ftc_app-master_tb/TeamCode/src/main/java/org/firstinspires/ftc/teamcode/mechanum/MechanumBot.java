@@ -67,10 +67,10 @@ public class MechanumBot extends SimpleBot
 
     public void updateMotorsMechanumDrive(double leftX, double leftY, double rightX, double rightY) {
 
-        // reverse all coordinates
-        double lX = -leftX;
+        // reverse Y coordinates
+        double lX = leftX;
         double lY = -leftY;
-        double rX = -rightX;
+        double rX = rightX;
         double rY = -rightY;
 
         double r = Math.hypot(lX, lY);

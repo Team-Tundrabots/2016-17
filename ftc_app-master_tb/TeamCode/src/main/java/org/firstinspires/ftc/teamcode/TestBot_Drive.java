@@ -47,10 +47,10 @@ public class TestBot_Drive extends OpMode{
     @Override
     public void loop() {
 
-        double leftX = -gamepad1.left_stick_x;
-        double leftY = -gamepad1.left_stick_y;
-        double rightX = -gamepad1.right_stick_x;
-        double rightY = -gamepad1.right_stick_y;
+        double leftX = gamepad1.left_stick_x;
+        double leftY = gamepad1.left_stick_y;
+        double rightX = gamepad1.right_stick_x;
+        double rightY = gamepad1.right_stick_y;
 
         // if tank drive
         robot.updateMotorsTankDrive(leftY, rightY);
