@@ -64,7 +64,6 @@ public class ProbeBot_AutoDriveToSafeZone extends LinearOpMode {
             robot.wait(1.0); // wait for 1 second
 
 
-
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);

@@ -58,18 +58,18 @@ public class Imperial1jewelrun_AutoDrive extends LinearOpMode {
         double upPower = 0.2;
         double downPower = -0.2;
 
-        for (int i = 0; i < 4; i++) {
+        {
             robot.moveForward(1.0, forwardPower);
             robot.wait(1.0); // wait for 1 second
             robot.turnLeft(0.5, turnPower);
             robot.wait(1.0); // wait for 1 second
             robot.moveBackward(1.0,backwardPower);
             robot.wait(1.0); // wait for 1 second
-            robot.leftArm.setPower(downPower);
+            robot.tail.setPosition(.666);
             robot.wait(1.0); // wait for 1 second
             robot.turnLeft(1.0,turnPower);
             robot.wait(1.0); // wait for 1 second
-            robot.tail.setPosition(upPower);
+            robot.tail.setPosition(.000);
         }
 
         telemetry.addData("Path", "Complete");

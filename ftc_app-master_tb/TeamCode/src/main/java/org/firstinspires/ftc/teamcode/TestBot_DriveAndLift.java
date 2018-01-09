@@ -67,11 +67,11 @@ public class TestBot_DriveAndLift extends OpMode{
 
         // move arm up if a button pushed
         if(gamepad1.right_trigger > 0){
-            robot.leftArm.setPower(.5);
+            robot.leftArm.setPower(-0.5);
 
         // move arm down if b button pushed
         } else if(gamepad1.left_trigger > 0){
-            robot.leftArm.setPower(-0.5);
+            robot.leftArm.setPower(.5);
 
         // if neither button pushed, stop arm
         } else {
