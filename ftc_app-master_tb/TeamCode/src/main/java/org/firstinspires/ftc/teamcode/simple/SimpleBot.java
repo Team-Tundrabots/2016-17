@@ -117,7 +117,7 @@ public class SimpleBot {
 
             motor.setDirection(direction);
             motor.setPower(0);
-            motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+            motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
             return (motor);
 

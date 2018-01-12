@@ -53,7 +53,8 @@ public class TestBot_DriveAndLift extends OpMode{
         double leftY = -gamepad1.left_stick_y;
         double rightX = -gamepad1.right_stick_x;
         double rightY = -gamepad1.right_stick_y;
-
+        double encoderTrackBackLeft = robot.leftDrive.getCurrentPosition();
+        double encoderTrackBackRight = robot.rightDrive.getCurrentPosition();
         // if tank drive
         robot.updateMotorsTankDrive(leftY, rightY);
 
@@ -64,7 +65,8 @@ public class TestBot_DriveAndLift extends OpMode{
         telemetry.addData("leftY",  "%.2f", leftY);
         telemetry.addData("rightX", "%.2f", rightX);
         telemetry.addData("rightY", "%.2f", rightY);
-
+        telemetry.addData("encoderTrackBackLeft", "%.2f", encoderTrackBackLeft);
+        telemetry.addData("encoderTrackBackRight", "&.2f", encoderTrackBackRight);
         // move arm up if a button pushed
         if(gamepad1.a){
             robot.leftArm.setPower(.5);
