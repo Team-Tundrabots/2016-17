@@ -50,6 +50,10 @@ public class CompetitionBot_TeleOp extends OpMode{
      */
     @Override
     public void start() {
+        double encLeftStart = robot.leftDrive.getCurrentPosition();
+        double encRightStart = robot.leftDrive.getCurrentPosition();
+        telemetry.addData("encLeftStart", "%.2f", encLeftStart);
+        telemetry.addData("encRightStart", "%.2f", encRightStart);
     }
 
     /*
