@@ -91,13 +91,31 @@ public class CompetitionBot_TeleOp extends OpMode{
         }
 
         // Use dpad to open and close the claw
-        if (gamepad1.dpad_up)
+        if (gamepad1.dpad_up) {
             clawOffset += CLAW_SPEED;
-        else if (gamepad1.dpad_down)
+            robot.moveClaws(clawOffset);
+        } else if (gamepad1.dpad_down) {
             clawOffset -= CLAW_SPEED;
+            robot.moveClaws(clawOffset);
+        }
 
-        robot.moveClaws(clawOffset);
+        if (gamepad1.right_bumper)
+            openClaws();
+        else if (gamepad1.left_bumper)
+            closeClaws();
+
     }
+
+    void closeClaws(){
+        robot.leftClaw.setPosition(0);
+        robot.rightClaw.setPosition(0);
+    }
+
+    void openClaws(){
+        robot.leftClaw.setPosition(0.666);
+        robot.rightClaw.setPosition(0.666);
+    }
+
 
     /*
      * Code to run ONCE after the driver hits STOP
@@ -106,3 +124,4 @@ public class CompetitionBot_TeleOp extends OpMode{
     public void stop() {
     }
 }
+

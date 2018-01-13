@@ -40,7 +40,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.Range;
 
 public class SimpleBot {
-    /* Public OpMode members. */
+    /* Public  OpMode members. */
     public DcMotor leftDrive = null;
     public DcMotor rightDrive = null;
 
