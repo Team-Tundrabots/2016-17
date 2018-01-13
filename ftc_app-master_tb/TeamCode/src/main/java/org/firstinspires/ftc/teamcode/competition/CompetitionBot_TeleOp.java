@@ -91,9 +91,9 @@ public class CompetitionBot_TeleOp extends OpMode{
         }
 
         // Use dpad to open and close the claw
-        if (gamepad1.dpad_up)
+        if (gamepad1.left_bumper)
             clawOffset += CLAW_SPEED;
-        else if (gamepad1.dpad_down)
+        else if (gamepad1.right_bumper)
             clawOffset -= CLAW_SPEED;
 
         robot.moveClaws(clawOffset);
