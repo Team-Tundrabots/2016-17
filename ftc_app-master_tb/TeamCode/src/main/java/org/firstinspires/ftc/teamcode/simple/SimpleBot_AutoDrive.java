@@ -38,7 +38,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 
 
 @Autonomous(name="SimpleBot: AutoDrive", group="simple")
-//@Disabled
+@Disabled
 public class SimpleBot_AutoDrive extends LinearOpMode {
 
     /* Declare OpMode members. */

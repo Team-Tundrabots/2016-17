@@ -27,55 +27,43 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode.camera;
+package org.firstinspires.ftc.teamcode.testbot;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
-
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.mechanum.MechanumBot;
-import org.firstinspires.ftc.teamcode.simple.SimpleBot;
-
-import for_camera_opmodes.OpModeCamera;
-import sample_camera_opmodes.DetectColor;
 
 
-public class CameraBot extends SimpleBot
-{
+@Autonomous(name="TestBot: AutoDrive", group="test")
+//@Disabled
+public class TestBot_AutoDrive extends LinearOpMode {
 
-    DetectColor cameraOp;
+    /* Declare OpMode members. */
+    TestBot  robot   = new TestBot(telemetry, this);
 
-    public CameraBot(Telemetry atelemetry) {
-        super(atelemetry);
-        cameraOp = new DetectColor();
-        cameraOp.telemetry = atelemetry;
+    @Override
+    public void runOpMode() {
+
+        robot.init(hardwareMap);
+
+        // Send telemetry message to signify robot waiting;
+        telemetry.addData("Status", "Ready to run");    //
+        telemetry.update();
+
+        // Wait for the game to start (driver presses PLAY)
+        waitForStart();
+
+        double forwardPower = 0.6;
+        double turnPower = 0.3;
+        
+        for (int i = 0; i < 4; i++) {
+            robot.moveForward(1.0, forwardPower);
+            robot.wait(1.0); // wait for 1 second
+            robot.turnLeft(0.5, turnPower);
+            robot.wait(1.0); // wait for 1 second
+        }
+
+        telemetry.addData("Path", "Complete");
+        telemetry.update();
+        sleep(1000);
     }
-
-    public CameraBot(Telemetry atelemetry, LinearOpMode aOpMode) {
-        super(atelemetry, aOpMode);
-        cameraOp = new DetectColor();
-        cameraOp.telemetry = atelemetry;
-    }
-
-    public void init(HardwareMap hwMap){
-        super.init(hwMap);
-        cameraOp.hardwareMap = hwMap;
-    }
-
-    public void initCamera(){
-        cameraOp.init();
-    }
-
-    public void stopCamera(){
-        cameraOp.stop();
-    }
-
-    public void checkCamera(){
-        cameraOp.loop();
-    }
-
-    public String getColorFromCamera() {return(cameraOp.getColorFromCamera());}
- }
-
+}

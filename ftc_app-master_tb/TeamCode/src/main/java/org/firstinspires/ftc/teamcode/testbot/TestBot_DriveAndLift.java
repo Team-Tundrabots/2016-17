@@ -1,14 +1,14 @@
 
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.testbot;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 
-@TeleOp(name="TestBot: Drive", group="test")
+@TeleOp(name="TestBot: DriveAndLift", group="test")
 
-public class TestBot_Drive extends OpMode{
+public class TestBot_DriveAndLift extends OpMode{
 
     /* Declare OpMode members. */
     TestBot robot       = new TestBot(telemetry);
@@ -16,6 +16,8 @@ public class TestBot_Drive extends OpMode{
     /*
      * Code to run ONCE when the driver hits INIT
      */
+
+
     @Override
     public void init() {
         /* Initialize the hardware variables.
@@ -63,6 +65,18 @@ public class TestBot_Drive extends OpMode{
         telemetry.addData("rightX", "%.2f", rightX);
         telemetry.addData("rightY", "%.2f", rightY);
 
+        // move arm up if a button pushed
+        if(gamepad1.right_trigger > 0){
+            robot.leftArm.setPower(-0.5);
+
+        // move arm down if b button pushed
+        } else if(gamepad1.left_trigger > 0){
+            robot.leftArm.setPower(.5);
+
+        // if neither button pushed, stop arm
+        } else {
+            robot.leftArm.setPower(0);
+        }
     }
 
     /*

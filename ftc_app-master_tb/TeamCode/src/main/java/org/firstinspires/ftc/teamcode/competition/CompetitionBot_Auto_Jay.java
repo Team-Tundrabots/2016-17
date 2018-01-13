@@ -27,23 +27,30 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.competition;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
+import org.firstinspires.ftc.teamcode.testbot.TestBot;
 
 
-@Autonomous(name="ProbeBot: AutoDriveToSafeZone", group="test")
-//@Disabled
-public class ProbeBot_AutoDriveToSafeZone extends LinearOpMode {
+@Autonomous(name="CompetitionBot: Auto_Jay", group="competition")
+
+public class CompetitionBot_Auto_Jay extends LinearOpMode {
 
     /* Declare OpMode members. */
-    TestBot  robot   = new TestBot(telemetry, this);
+    CompetitionBot robot   = new CompetitionBot(telemetry, this);
 
     @Override
+
     public void runOpMode() {
 
         robot.init(hardwareMap);
+        robot.leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Ready to run");    //
@@ -52,17 +59,25 @@ public class ProbeBot_AutoDriveToSafeZone extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        double forwardPower = 0.2;
-        double turnPower = 0.2;
-        
+        double forwardPower = 0.5;
+        double backwardPower = -0.5;
+        double turnPower = 0.5;
+        double upPower = 0.2;
+        double downPower = -0.2;
 
+        {
             robot.moveForward(1.0, forwardPower);
             robot.wait(1.0); // wait for 1 second
-            robot.turnLeft(2.0, turnPower);
+            robot.turnLeft(0.5, turnPower);
             robot.wait(1.0); // wait for 1 second
-            robot.moveForward(1.5, forwardPower);
+            robot.moveBackward(1.0,backwardPower);
             robot.wait(1.0); // wait for 1 second
-
+            robot.tail.setPosition(.666);
+            robot.wait(1.0); // wait for 1 second
+            robot.turnLeft(1.0,turnPower);
+            robot.wait(1.0); // wait for 1 second
+            robot.tail.setPosition(.000);
+        }
 
         telemetry.addData("Path", "Complete");
         telemetry.update();

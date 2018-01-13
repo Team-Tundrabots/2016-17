@@ -2,6 +2,7 @@ package sample_camera_opmodes;
 
 import android.graphics.Bitmap;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
@@ -14,7 +15,8 @@ import for_camera_opmodes.LinearOpModeCamera;
  */
 
 @TeleOp(name = "LinearDetectColor", group = "ZZOpModeCameraPackage")
-//@Disabled
+@Disabled
+
 public class LinearDetectColor extends LinearOpModeCamera {
 
     DcMotor motorRight;

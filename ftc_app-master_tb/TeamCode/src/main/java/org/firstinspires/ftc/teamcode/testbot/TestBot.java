@@ -27,53 +27,44 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.testbot;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
+
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.mechanum.MechanumBot;
 
 
-@Autonomous(name="Imperial1jewelrun: AutoDrive", group="test")
-//@Disabled
-public class Imperial1jewelrun_AutoDrive extends LinearOpMode {
+public class TestBot extends MechanumBot
+{
+    /* Public OpMode members. */
+    //   public DcMotor  newMotor    = null;
+    public Servo    tail    = null;
 
-    /* Declare OpMode members. */
-    TestBot  robot   = new TestBot(telemetry, this);
-
-    @Override
-    public void runOpMode() {
-
-        robot.init(hardwareMap);
-
-        // Send telemetry message to signify robot waiting;
-        telemetry.addData("Status", "Ready to run");    //
-        telemetry.update();
-
-        // Wait for the game to start (driver presses PLAY)
-        waitForStart();
-
-        double forwardPower = 0.5;
-        double backwardPower = -0.5;
-        double turnPower = 0.5;
-        double upPower = 0.2;
-        double downPower = -0.2;
-
-        {
-            robot.moveForward(1.0, forwardPower);
-            robot.wait(1.0); // wait for 1 second
-            robot.turnLeft(0.5, turnPower);
-            robot.wait(1.0); // wait for 1 second
-            robot.moveBackward(1.0,backwardPower);
-            robot.wait(1.0); // wait for 1 second
-            robot.tail.setPosition(.666);
-            robot.wait(1.0); // wait for 1 second
-            robot.turnLeft(1.0,turnPower);
-            robot.wait(1.0); // wait for 1 second
-            robot.tail.setPosition(.000);
-        }
-
-        telemetry.addData("Path", "Complete");
-        telemetry.update();
-        sleep(1000);
+    public TestBot(Telemetry atelemetry) {
+        super(atelemetry);
     }
-}
+    public TestBot(Telemetry atelemetry, LinearOpMode aOpMode) {
+        super(atelemetry, aOpMode);
+    }
+
+    /* Initialize standard Hardware interfaces */
+    public void init(HardwareMap hwMap) {
+
+        // Save reference to Hardware map
+        super.init(hwMap);
+
+        // Define and Initialize Motors
+        // newMotor = initMotor(hwMap, "new_motor");
+
+        // Define and initialize ALL installed servos.
+        tail = initServo(hwMap, "tail");
+
+    }
+
+
+ }
+
