@@ -1,17 +1,22 @@
 
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.testbot;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 
-@TeleOp(name="TestBot: DriveAndLift", group="test")
+@TeleOp(name="TestBot: DriveAndLiftWithClaw", group="test")
 
-public class TestBot_DriveAndLift extends OpMode{
+public class TestBot_DriveAndLiftWithClaw extends OpMode{
 
     /* Declare OpMode members. */
     TestBot robot       = new TestBot(telemetry);
+
+
+    double          clawOffset      = 0;                       // Servo mid position
+    final double    CLAW_SPEED      = 0.02 ;                   // sets rate to move servo
 
     /*
      * Code to run ONCE when the driver hits INIT
@@ -77,6 +82,14 @@ public class TestBot_DriveAndLift extends OpMode{
         } else {
             robot.leftArm.setPower(0);
         }
+
+        // Use dpad to open and close the claw
+        if (gamepad1.dpad_up)
+            clawOffset += CLAW_SPEED;
+        else if (gamepad1.dpad_down)
+            clawOffset -= CLAW_SPEED;
+
+        robot.moveClaws(clawOffset);
     }
 
     /*

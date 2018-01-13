@@ -27,20 +27,20 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.testbot;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.simple.SimpleBot;
 
+@Autonomous(name="ProbeBot: AutoDriveToSafeZone", group="test")
+@Disabled
 
-@Autonomous(name="TestBot: AutoDrive", group="test")
-//@Disabled
-public class TestBot_AutoDrive extends LinearOpMode {
+public class ProbeBot_AutoDriveToSafeZone extends LinearOpMode {
 
     /* Declare OpMode members. */
-    TestBot  robot   = new TestBot(telemetry, this);
+    TestBot robot   = new TestBot(telemetry, this);
 
     @Override
     public void runOpMode() {
@@ -54,15 +54,17 @@ public class TestBot_AutoDrive extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        double forwardPower = 0.6;
-        double turnPower = 0.3;
+        double forwardPower = 0.2;
+        double turnPower = 0.2;
         
-        for (int i = 0; i < 4; i++) {
+
             robot.moveForward(1.0, forwardPower);
             robot.wait(1.0); // wait for 1 second
-            robot.turnLeft(0.5, turnPower);
+            robot.turnLeft(2.0, turnPower);
             robot.wait(1.0); // wait for 1 second
-        }
+            robot.moveForward(1.5, forwardPower);
+            robot.wait(1.0); // wait for 1 second
+
 
         telemetry.addData("Path", "Complete");
         telemetry.update();

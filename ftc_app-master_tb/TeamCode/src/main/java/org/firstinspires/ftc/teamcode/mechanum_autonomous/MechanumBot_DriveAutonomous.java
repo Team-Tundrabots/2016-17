@@ -2,6 +2,7 @@
 
 package org.firstinspires.ftc.teamcode.mechanum_autonomous;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -9,7 +10,7 @@ import org.firstinspires.ftc.teamcode.mechanum.MechanumBot;
 
 
 @TeleOp(name="MechanumBot Autonomous: Drive", group="mechanum")
-
+@Disabled
 public class MechanumBot_DriveAutonomous extends OpMode{
 
     /* Declare OpMode members. */

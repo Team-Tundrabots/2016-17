@@ -1,20 +1,23 @@
 
 
-package org.firstinspires.ftc.teamcode.simple;
+package org.firstinspires.ftc.teamcode.competition;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
+import org.firstinspires.ftc.teamcode.testbot.TestBot;
 
 
-@TeleOp(name="SimpleBot: Drive", group="simple")
-@Disabled
+@TeleOp(name="CompetitionBot: TeleOp", group="competition")
+//@Disabled
 
-public class SimpleBot_Drive extends OpMode{
+public class CompetitionBot_TeleOp extends OpMode{
 
     /* Declare OpMode members. */
-    SimpleBot robot       = new SimpleBot(telemetry);
+    TestBot robot       = new TestBot(telemetry);
+
 
     double          clawOffset      = 0;                       // Servo mid position
     final double    CLAW_SPEED      = 0.02 ;                   // sets rate to move servo
@@ -22,6 +25,8 @@ public class SimpleBot_Drive extends OpMode{
     /*
      * Code to run ONCE when the driver hits INIT
      */
+
+
     @Override
     public void init() {
         /* Initialize the hardware variables.
@@ -53,19 +58,37 @@ public class SimpleBot_Drive extends OpMode{
     @Override
     public void loop() {
 
-
         double leftX = gamepad1.left_stick_x;
         double leftY = gamepad1.left_stick_y;
         double rightX = gamepad1.right_stick_x;
         double rightY = gamepad1.right_stick_y;
 
+        double encoderTrackBackLeft = robot.leftDrive.getCurrentPosition();
+        double encoderTrackBackRight = robot.rightDrive.getCurrentPosition();
+
+        // if tank drive
         robot.updateMotorsTankDrive(leftY, rightY);
 
-        // Send telemetry message to signify robot running;
-        telemetry.addData("leftX", "%.2f", leftX);
-        telemetry.addData("leftY", "%.2f", leftY);
+        telemetry.addData("leftX",  "%.2f", leftX);
+        telemetry.addData("leftY",  "%.2f", leftY);
         telemetry.addData("rightX", "%.2f", rightX);
         telemetry.addData("rightY", "%.2f", rightY);
+
+        telemetry.addData("encoderTrackBackLeft", "%.2f", encoderTrackBackLeft);
+        telemetry.addData("encoderTrackBackRight", "%.2f", encoderTrackBackRight);
+
+        // move arm up if a button pushed
+        if(gamepad1.right_trigger > 0){
+            robot.leftArm.setPower(-0.5);
+
+        // move arm down if b button pushed
+        } else if(gamepad1.left_trigger > 0){
+            robot.leftArm.setPower(.5);
+
+        // if neither button pushed, stop arm
+        } else {
+            robot.leftArm.setPower(0);
+        }
 
         // Use dpad to open and close the claw
         if (gamepad1.dpad_up)
@@ -74,7 +97,6 @@ public class SimpleBot_Drive extends OpMode{
             clawOffset -= CLAW_SPEED;
 
         robot.moveClaws(clawOffset);
-
     }
 
     /*

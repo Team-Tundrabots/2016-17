@@ -27,55 +27,45 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode.camera;
+package org.firstinspires.ftc.teamcode.competition;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.camera.CameraBot;
 import org.firstinspires.ftc.teamcode.mechanum.MechanumBot;
 import org.firstinspires.ftc.teamcode.simple.SimpleBot;
 
-import for_camera_opmodes.OpModeCamera;
-import sample_camera_opmodes.DetectColor;
 
-
-public class CameraBot extends SimpleBot
+public class CompetitionBot extends CameraBot
 {
+    /* Public OpMode members. */
+    //   public DcMotor  newMotor    = null;
+    public Servo    tail    = null;
 
-    DetectColor cameraOp;
-
-    public CameraBot(Telemetry atelemetry) {
+    public CompetitionBot(Telemetry atelemetry) {
         super(atelemetry);
-        cameraOp = new DetectColor();
-        cameraOp.telemetry = atelemetry;
     }
-
-    public CameraBot(Telemetry atelemetry, LinearOpMode aOpMode) {
+    public CompetitionBot(Telemetry atelemetry, LinearOpMode aOpMode) {
         super(atelemetry, aOpMode);
-        cameraOp = new DetectColor();
-        cameraOp.telemetry = atelemetry;
     }
 
-    public void init(HardwareMap hwMap){
+    /* Initialize standard Hardware interfaces */
+    public void init(HardwareMap hwMap) {
+
+        // Save reference to Hardware map
         super.init(hwMap);
-        cameraOp.hardwareMap = hwMap;
+
+        // Define and Initialize Motors
+        // newMotor = initMotor(hwMap, "new_motor");
+
+        // Define and initialize ALL installed servos.
+        tail = initServo(hwMap, "tail");
+
     }
 
-    public void initCamera(){
-        cameraOp.init();
-    }
 
-    public void stopCamera(){
-        cameraOp.stop();
-    }
-
-    public void checkCamera(){
-        cameraOp.loop();
-    }
-
-    public String getColorFromCamera() {return(cameraOp.getColorFromCamera());}
  }
 

@@ -27,8 +27,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode;
-import org.firstinspires.ftc.teamcode.simple.SimpleBot;
+package org.firstinspires.ftc.teamcode.testbot;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
@@ -70,7 +69,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 
 @Autonomous(name="TestBot: AutoVuMark", group="test")
-//@Disabled
+@Disabled
 public class TestBot_AutoVuMark extends LinearOpMode {
 
     /* Declare OpMode members. */
