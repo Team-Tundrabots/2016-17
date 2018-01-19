@@ -2,11 +2,13 @@
 
 package org.firstinspires.ftc.teamcode.testbot;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 
 @TeleOp(name="TestBot: Drive", group="test")
+@Disabled
 
 public class TestBot_Drive extends OpMode{
 

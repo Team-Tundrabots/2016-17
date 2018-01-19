@@ -30,11 +30,12 @@
 package org.firstinspires.ftc.teamcode.testbot;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
 @Autonomous(name="TestBot: AutoDrive", group="test")
-//@Disabled
+@Disabled
 public class TestBot_AutoDrive extends LinearOpMode {
 
     /* Declare OpMode members. */

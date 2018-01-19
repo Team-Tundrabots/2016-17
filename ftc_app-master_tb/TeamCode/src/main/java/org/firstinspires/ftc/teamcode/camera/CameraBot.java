@@ -76,6 +76,6 @@ public class CameraBot extends SimpleBot
         cameraOp.loop();
     }
 
-    public String getColorFromCamera() {return(cameraOp.getColorFromCamera());}
+    public String getColorFromCamera() {return(cameraOp.getColorFromCamera(cameraOp.telemetry));}
  }
 

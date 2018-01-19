@@ -30,13 +30,15 @@
 package org.firstinspires.ftc.teamcode.camera;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.simple.SimpleBot;
 
 
 @Autonomous(name="CameraBot: AutoDrive", group="test")
-//@Disabled
+@Disabled
+
 public class CameraBot_AutoDrive extends LinearOpMode {
 
     /* Declare OpMode members. */

@@ -5,6 +5,8 @@ import android.graphics.Bitmap;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 import for_camera_opmodes.OpModeCamera;
 
 /**
@@ -47,7 +49,7 @@ public class DetectColor extends OpModeCamera {
   public void loop() {
     long startTime = System.currentTimeMillis();
 
-    String colorString = getColorFromCamera();
+    String colorString = getColorFromCamera(telemetry);
     telemetry.addData("Color:", "Color detected is: " + colorString);
 
     long endTime = System.currentTimeMillis();
@@ -58,7 +60,7 @@ public class DetectColor extends OpModeCamera {
     lastLoopTime = endTime;
   }
 
-  public String getColorFromCamera() {
+  public String getColorFromCamera(Telemetry atelemetry) {
 
     String colorString = "N/A";
 
@@ -79,6 +81,11 @@ public class DetectColor extends OpModeCamera {
           greenValue += green(pixel);
         }
       }
+
+      telemetry.addData("redValue", "%d", redValue);
+      telemetry.addData("blueValue", "%d", blueValue);
+      telemetry.addData("greenValue", "%df", greenValue);
+
       int color = highestColor(redValue, greenValue, blueValue);
 
       switch (color) {
