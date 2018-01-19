@@ -46,8 +46,8 @@ public class CompetitionBot_Auto_Encoder extends LinearOpMode {
     public void runOpMode() {
 
         robot.init(hardwareMap);
-        robot.leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        /*robot.leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);*/
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Ready to run");    //
@@ -63,21 +63,30 @@ public class CompetitionBot_Auto_Encoder extends LinearOpMode {
         double downPower = -0.2;
 
         //not tracking right encoder becuause the rate of movement should be the same
+        //double encLeftPreloop = robot.leftDrive.getCurrentPosition();
+
+        telemetry.addData("Path", "pre start");
+        telemetry.update();
+        sleep(1000);
+        robot.setLeftMotorsPower(1);
+        robot.setRightMotorsPower(1);
+        telemetry.addData("Path", "post-start");
+        telemetry.update();
+        sleep(2000);
+
+/*
+
+        double safeZoneDistance = robot.leftDrive.getCurrentPosition() - 20000;
         double encLeftPreloop = robot.leftDrive.getCurrentPosition();
-        double safeZoneDistance = robot.leftDrive.getCurrentPosition() + 20000;
-        robot.setLeftMotorsPower(forwardPower);
-        robot.setRightMotorsPower(forwardPower);
         telemetry.addData("encLeftPreloop", "%.2f", encLeftPreloop);
-        while (encLeftPreloop < safeZoneDistance)
+        while (encLeftPreloop > safeZoneDistance)
         {
             encLeftPreloop = robot.leftDrive.getCurrentPosition();
             telemetry.addData("encLeftInloop", "%.2f", encLeftPreloop);
+            sleep(1000);
         }
-        robot.setLeftMotorsPower(0.0);
-        robot.setRightMotorsPower(0.0);
 
         telemetry.addData("Path", "Complete");
-        telemetry.update();
-        sleep(1000);
+        */
     }
 }
