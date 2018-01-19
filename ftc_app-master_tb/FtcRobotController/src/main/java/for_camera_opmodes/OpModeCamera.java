@@ -87,7 +87,7 @@ public class OpModeCamera extends OpMode {
     for (int i = 0; i < numberOfCameras; i++) {
       Camera.CameraInfo info = new Camera.CameraInfo();
       Camera.getCameraInfo(i, info);
-      if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) { // Camera.CameraInfo.CAMERA_FACING_FRONT or BACK
+      if (info.facing == Camera.CameraInfo.CAMERA_FACING_BACK) { // Camera.CameraInfo.CAMERA_FACING_FRONT or BACK
         cameraId = i;
         break;
       }
@@ -126,7 +126,7 @@ public class OpModeCamera extends OpMode {
   }
 
   public void startCamera() {
-    camera = openCamera(Camera.CameraInfo.CAMERA_FACING_FRONT);
+    camera = openCamera(Camera.CameraInfo.CAMERA_FACING_BACK);
 
     camera.setPreviewCallback(previewCallback);
 

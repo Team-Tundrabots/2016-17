@@ -38,6 +38,7 @@ import org.firstinspires.ftc.teamcode.testbot.TestBot;
 
 
 @Autonomous(name="CompetitionBot: Auto_Jay", group="competition")
+@Disabled
 
 public class CompetitionBot_Auto_Jay extends LinearOpMode {
 

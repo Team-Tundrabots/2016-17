@@ -30,26 +30,23 @@
 package org.firstinspires.ftc.teamcode.competition;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 
 
-@Autonomous(name="CompetitionBot: Auto_Encoder", group="competition")
-@Disabled
-
-public class CompetitionBot_Auto_Encoder extends LinearOpMode {
+@Autonomous(name="CompetitionBot: AutoDrive" +
+        "" +
+        "", group="competition")
+//@Disabled
+public class CompetitionBot_AutoDrive extends LinearOpMode {
 
     /* Declare OpMode members. */
-    CompetitionBot robot   = new CompetitionBot(telemetry, this);
+    CompetitionBot  robot   = new CompetitionBot(telemetry, this);
 
     @Override
-
     public void runOpMode() {
 
         robot.init(hardwareMap);
-        robot.leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.initCamera();
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Ready to run");    //
@@ -58,25 +55,8 @@ public class CompetitionBot_Auto_Encoder extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        double forwardPower = 0.5;
-        double backwardPower = -0.5;
-        double turnPower = 0.5;
-        double upPower = 0.2;
-        double downPower = -0.2;
+        robot.moveForward(1, 1);
 
-        //not tracking right encoder becuause the rate of movement should be the same
-        double encLeftPreloop = robot.leftDrive.getCurrentPosition();
-        double safeZoneDistance = robot.leftDrive.getCurrentPosition() + 20000;
-        robot.setLeftMotorsPower(forwardPower);
-        robot.setRightMotorsPower(forwardPower);
-        telemetry.addData("encLeftPreloop", "%.2f", encLeftPreloop);
-        while (encLeftPreloop < safeZoneDistance)
-        {
-            encLeftPreloop = robot.leftDrive.getCurrentPosition();
-            telemetry.addData("encLeftInloop", "%.2f", encLeftPreloop);
-        }
-        robot.setLeftMotorsPower(0.0);
-        robot.setRightMotorsPower(0.0);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
