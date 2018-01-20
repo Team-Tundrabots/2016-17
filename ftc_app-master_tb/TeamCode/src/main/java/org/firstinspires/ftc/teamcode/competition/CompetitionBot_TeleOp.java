@@ -16,7 +16,7 @@ import org.firstinspires.ftc.teamcode.testbot.TestBot;
 public class CompetitionBot_TeleOp extends OpMode{
 
     /* Declare OpMode members. */
-    TestBot robot       = new TestBot(telemetry);
+    CompetitionBot robot       = new CompetitionBot(telemetry);
 
 
     double          clawOffset      = 0;                       // Servo mid position

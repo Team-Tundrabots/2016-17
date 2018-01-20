@@ -61,7 +61,7 @@ public class TestBot extends MechanumBot
         // newMotor = initMotor(hwMap, "new_motor");
 
         // Define and initialize ALL installed servos.
-        tail = initServo(hwMap, "tail");
+        tail = initServo(hwMap, "tail", 0.5);
 
     }
 
