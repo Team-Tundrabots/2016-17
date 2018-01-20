@@ -39,6 +39,8 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.Range;
 
+import static java.lang.Thread.sleep;
+
 public class SimpleBot {
     /* Public OpMode members. */
     public DcMotor leftDrive = null;
@@ -89,8 +91,8 @@ public class SimpleBot {
         leftArm = initMotor(hwMap, "left_arm");
 
         // Define and initialize ALL installed servos.
-        leftClaw = initServo(hwMap, "left_claw");
-        rightClaw = initServo(hwMap, "right_claw");
+        rightClaw = initServo(hwMap, "right_claw", 0);
+        leftClaw = initServo(hwMap, "left_claw", 1.1);
     }
 
 
@@ -129,10 +131,10 @@ public class SimpleBot {
         }
     }
 
-    public Servo initServo(HardwareMap ahwMap, String servoName) {
+    public Servo initServo(HardwareMap ahwMap, String servoName, double position) {
         try {
             Servo servo = ahwMap.get(Servo.class, servoName);
-            servo.setPosition(0.5);
+            servo.setPosition(position);
 
             return (servo);
 
