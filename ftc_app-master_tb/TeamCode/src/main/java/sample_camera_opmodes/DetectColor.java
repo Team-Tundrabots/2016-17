@@ -73,8 +73,13 @@ public class DetectColor extends OpModeCamera {
       Bitmap rgbImage;
       rgbImage = convertYuvImageToRgb(yuvImage, width, height, ds2);
 
-      for (int x = 0; x < rgbImage.getWidth(); x++) {
-        for (int y = 0; y < rgbImage.getHeight(); y++) {
+      telemetry.addData("width", "%d", width);
+      telemetry.addData("height", "%d", height);
+      telemetry.addData(" rgbImage.getWidth()", "%d",  rgbImage.getWidth());
+      telemetry.addData(" rgbImage.getHeight()", "%d", rgbImage.getHeight());
+
+      for (int x = 25; x < rgbImage.getWidth() - 25; x++) {
+        for (int y = 95; y < rgbImage.getHeight(); y++) {
           int pixel = rgbImage.getPixel(x, y);
           redValue += red(pixel);
           blueValue += blue(pixel);
@@ -84,7 +89,7 @@ public class DetectColor extends OpModeCamera {
 
       telemetry.addData("redValue", "%d", redValue);
       telemetry.addData("blueValue", "%d", blueValue);
-      telemetry.addData("greenValue", "%df", greenValue);
+      telemetry.addData("greenValue", "%d", greenValue);
 
       int color = highestColor(redValue, greenValue, blueValue);
 

@@ -27,15 +27,17 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode.competition;
+package org.firstinspires.ftc.teamcode.testbot;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.teamcode.competition.CompetitionBot;
 
-@Autonomous(name="CompetitionBot: AutoDrive", group="competition")
+
+@Autonomous(name="TestBot: AutoServoTest", group="competition")
 //@Disabled
-public class CompetitionBot_AutoDrive extends LinearOpMode {
+public class TestBot_AutoServoTest extends LinearOpMode {
 
     /* Declare OpMode members. */
     CompetitionBot  robot   = new CompetitionBot(telemetry, this);
@@ -44,7 +46,6 @@ public class CompetitionBot_AutoDrive extends LinearOpMode {
     public void runOpMode() {
 
         robot.init(hardwareMap);
-        robot.initCamera();
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Ready to run");    //
@@ -53,11 +54,26 @@ public class CompetitionBot_AutoDrive extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        robot.moveForward(1, 1);
+        telemetry.addData("startPosition", "%.2f", robot.tail.getPosition());
+        setTailPostion(0.7);
+        setTailPostion(0.6);
+        setTailPostion(0.5);
+        setTailPostion(0.4);
+        setTailPostion(0.3);
 
 
-        telemetry.addData("Path", "Complete");
+        setTailPostion(0.2);
+
+        //telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);
     }
+
+    void setTailPostion(double position) {
+        robot.tail.setPosition(position);
+        telemetry.addData("tailPosition",  "%.2f", position);
+        telemetry.update();
+        sleep(1000);
+    }
+
 }

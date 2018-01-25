@@ -27,24 +27,27 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode.competition;
+package org.firstinspires.ftc.teamcode.sensor;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.teamcode.testbot.TestBot;
 
-@Autonomous(name="CompetitionBot: AutoDrive", group="competition")
+
+@Autonomous(name="SensorBot: AutoColorSensor", group="test")
 //@Disabled
-public class CompetitionBot_AutoDrive extends LinearOpMode {
+
+public class SensorBot_AutoColorSensor extends LinearOpMode {
 
     /* Declare OpMode members. */
-    CompetitionBot  robot   = new CompetitionBot(telemetry, this);
+    TestBot  robot   = new TestBot(telemetry, this);
 
     @Override
     public void runOpMode() {
 
         robot.init(hardwareMap);
-        robot.initCamera();
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Ready to run");    //
@@ -53,11 +56,17 @@ public class CompetitionBot_AutoDrive extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        robot.moveForward(1, 1);
+
+        while (opModeIsActive()) {
+
+            telemetry.addData("blue", robot.ballSensor.blue());
+            telemetry.addData("red", robot.ballSensor.red());
+            telemetry.addData("green", robot.ballSensor.green());
+        }
 
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
-        sleep(1000);
+
     }
 }

@@ -27,37 +27,64 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode.competition;
+package org.firstinspires.ftc.teamcode.sensor;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
+
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+//import org.firstinspires.ftc.teamcode.camera.CameraBot;
+import org.firstinspires.ftc.teamcode.simple.SimpleBot;
 
 
-@Autonomous(name="CompetitionBot: AutoDrive", group="competition")
-//@Disabled
-public class CompetitionBot_AutoDrive extends LinearOpMode {
+public class SensorBot extends SimpleBot
+{
+    Telemetry telemetry = null;
 
-    /* Declare OpMode members. */
-    CompetitionBot  robot   = new CompetitionBot(telemetry, this);
+    /* Public OpMode members. */
+    //   public DcMotor  newMotor    = null;
+    public ColorSensor ballSensor = null;
 
-    @Override
-    public void runOpMode() {
-
-        robot.init(hardwareMap);
-        robot.initCamera();
-
-        // Send telemetry message to signify robot waiting;
-        telemetry.addData("Status", "Ready to run");    //
-        telemetry.update();
-
-        // Wait for the game to start (driver presses PLAY)
-        waitForStart();
-
-        robot.moveForward(1, 1);
-
-
-        telemetry.addData("Path", "Complete");
-        telemetry.update();
-        sleep(1000);
+    public SensorBot(Telemetry atelemetry) {
+        super(atelemetry);
+        telemetry = atelemetry;
     }
-}
+
+    public SensorBot(Telemetry atelemetry, LinearOpMode aOpMode) {
+        super(atelemetry, aOpMode);
+        telemetry = atelemetry;
+    }
+
+    /* Initialize standard Hardware interfaces */
+    public void init(HardwareMap hwMap) {
+
+        // Save reference to Hardware map
+        super.init(hwMap);
+
+        // Define and Initialize Motors
+        // newMotor = initMotor(hwMap, "new_motor");
+
+        // Define and initialize ALL installed sensors.
+        ballSensor = initColorSensor(hwMap, "ball_sensor");
+
+    }
+
+    public ColorSensor initColorSensor(HardwareMap ahwMap, String sensorName) {
+        try {
+            ColorSensor sensor = ahwMap.get(ColorSensor.class, sensorName);
+            sensor.enableLed(true);
+
+            return (sensor);
+
+        } catch (IllegalArgumentException err) {
+            if (telemetry != null) {
+                telemetry.addData("Error", err.getMessage());
+            }
+            return null;
+        }
+    }
+
+ }
+

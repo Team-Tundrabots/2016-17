@@ -81,6 +81,12 @@ public class CompetitionBot_TeleOp extends OpMode{
         telemetry.addData("encoderTrackBackLeft", "%.2f", encoderTrackBackLeft);
         telemetry.addData("encoderTrackBackRight", "%.2f", encoderTrackBackRight);
 
+
+        if(gamepad1.a){
+            robot.tail.setPosition(1);
+        } else if(gamepad1.b){
+            robot.tail.setPosition(0.2);
+        }
         // move arm up if a button pushed
         if(gamepad1.right_trigger > 0){
             robot.leftArm.setPower(-0.5);
