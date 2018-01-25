@@ -30,25 +30,31 @@
 package org.firstinspires.ftc.teamcode.testbot;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.mechanum.MechanumBot;
+import org.firstinspires.ftc.teamcode.simple.SimpleBot;
 
 
-public class TestBot extends MechanumBot
+public class TestBot extends SimpleBot
 {
     /* Public OpMode members. */
     //   public DcMotor  newMotor    = null;
+    Telemetry telemetry = null;
+
     public Servo    tail    = null;
+    public ColorSensor ballSensor = null;
 
     public TestBot(Telemetry atelemetry) {
         super(atelemetry);
+        telemetry = atelemetry;
     }
     public TestBot(Telemetry atelemetry, LinearOpMode aOpMode) {
         super(atelemetry, aOpMode);
+        telemetry = atelemetry;
     }
 
     /* Initialize standard Hardware interfaces */
@@ -62,9 +68,23 @@ public class TestBot extends MechanumBot
 
         // Define and initialize ALL installed servos.
         tail = initServo(hwMap, "tail", 0.5);
+        ballSensor = initColorSensor(hwMap, "ball_sensor");
 
     }
 
+    public ColorSensor initColorSensor(HardwareMap ahwMap, String sensorName) {
+        try {
+            ColorSensor sensor = ahwMap.get(ColorSensor.class, sensorName);
+            sensor.enableLed(true);
 
+            return (sensor);
+
+        } catch (IllegalArgumentException err) {
+            if (telemetry != null) {
+                telemetry.addData("Error", err.getMessage());
+            }
+            return null;
+        }
+    }
  }
 

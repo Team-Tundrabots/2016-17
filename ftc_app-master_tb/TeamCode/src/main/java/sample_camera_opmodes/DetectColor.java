@@ -78,8 +78,8 @@ public class DetectColor extends OpModeCamera {
       telemetry.addData(" rgbImage.getWidth()", "%d",  rgbImage.getWidth());
       telemetry.addData(" rgbImage.getHeight()", "%d", rgbImage.getHeight());
 
-      for (int x = 25; x < rgbImage.getWidth() - 50; x++) {
-        for (int y = 70; y < rgbImage.getHeight() - 10; y++) {
+      for (int x = 25; x < rgbImage.getWidth() - 25; x++) {
+        for (int y = 95; y < rgbImage.getHeight(); y++) {
           int pixel = rgbImage.getPixel(x, y);
           redValue += red(pixel);
           blueValue += blue(pixel);
