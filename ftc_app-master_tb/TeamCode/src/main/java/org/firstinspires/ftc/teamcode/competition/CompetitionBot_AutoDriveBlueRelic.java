@@ -33,9 +33,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
-@Autonomous(name="CompetitionBot: AutoDriveRed", group="competition")
+@Autonomous(name="CompetitionBot: AutoDriveBlueRelic", group="competition")
 //@Disabled
-public class CompetitionBot_AutoDriveRed extends LinearOpMode {
+public class CompetitionBot_AutoDriveBlueRelic extends LinearOpMode {
 
     /* Declare OpMode members. */
     CompetitionBot  robot   = new CompetitionBot(telemetry, this);
@@ -59,21 +59,20 @@ public class CompetitionBot_AutoDriveRed extends LinearOpMode {
         sleep(1000);
 
         String color =  robot.getColorFromCamera();
-        if(color != "RED") {
-            robot.turnRight(0.8, 1.0);
+        if(color == "RED") {
+            robot.turnRight(1.1, 1.0);
             robot.tail.setPosition(1);
-            robot.moveForward(1.1, 1);
-            telemetry.addData("color", "BLUE");
+            robot.moveBackward(1.5, 1);
+            telemetry.addData("color", "RED");
 
         }
         else
         {
-            robot.turnLeft(1.2, 1);
+            robot.turnLeft(0.9, 1);
             robot.tail.setPosition(1);
-            robot.moveBackward(1.3, 1);
-            telemetry.addData("color", "RED");
+            robot.moveForward(1, 1);
+            telemetry.addData("color", "BLUE");
         }
-
 
         telemetry.addData("tailPosition",  "%.2f", tailPosition);
         telemetry.addData("Path", "Complete");

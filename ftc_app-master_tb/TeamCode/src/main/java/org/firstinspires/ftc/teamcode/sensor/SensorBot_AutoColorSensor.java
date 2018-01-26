@@ -62,6 +62,8 @@ public class SensorBot_AutoColorSensor extends LinearOpMode {
             telemetry.addData("blue", robot.ballSensor.blue());
             telemetry.addData("red", robot.ballSensor.red());
             telemetry.addData("green", robot.ballSensor.green());
+            telemetry.update();
+
         }
 
 
