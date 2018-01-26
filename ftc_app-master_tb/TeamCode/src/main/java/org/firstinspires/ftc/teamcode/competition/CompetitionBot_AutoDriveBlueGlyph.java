@@ -33,9 +33,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
-@Autonomous(name="CompetitionBot: AutoDriveRed", group="competition")
+@Autonomous(name="CompetitionBot: AutoDriveBlueGlyph", group="competition")
 //@Disabled
-public class CompetitionBot_AutoDriveRed extends LinearOpMode {
+public class CompetitionBot_AutoDriveBlueGlyph extends LinearOpMode {
 
     /* Declare OpMode members. */
     CompetitionBot  robot   = new CompetitionBot(telemetry, this);
@@ -53,25 +53,35 @@ public class CompetitionBot_AutoDriveRed extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
+        robot.leftArm.setPower(0.5); // lift raises
+        sleep(2000);
+        robot.leftArm.setPower(0);
+        robot.moveClaws(0.5); // open claws
+        robot.leftArm.setPower(-0.5);
+        sleep(2000);
+        robot.leftArm.setPower(0);
+        robot.moveClaws(-0.3);
+
+
         double tailPosition = robot.tail.getPosition();
 //        robot.tail.setPosition(tailPosition -.03);
         robot.tail.setPosition(0.2);
         sleep(1000);
 
         String color =  robot.getColorFromCamera();
-        if(color != "RED") {
-            robot.turnRight(0.8, 1.0);
+        if(color == "RED") {
+            robot.turnRight(1.1, 1.0);
             robot.tail.setPosition(1);
-            robot.moveForward(1.1, 1);
-            telemetry.addData("color", "BLUE");
+            robot.moveBackward(1.5, 1);
+            telemetry.addData("color", "RED");
 
         }
         else
         {
-            robot.turnLeft(1.2, 1);
+            robot.turnLeft(0.9, 1);
             robot.tail.setPosition(1);
-            robot.moveBackward(1.3, 1);
-            telemetry.addData("color", "RED");
+            robot.moveForward(1, 1);
+            telemetry.addData("color", "BLUE");
         }
 
 

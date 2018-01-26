@@ -33,9 +33,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
-@Autonomous(name="CompetitionBot: AutoDriveRed", group="competition")
+@Autonomous(name="CompetitionBot: AutoDriveRedRelic", group="competition")
 //@Disabled
-public class CompetitionBot_AutoDriveRed extends LinearOpMode {
+public class CompetitionBot_AutoDriveRedRelic extends LinearOpMode {
 
     /* Declare OpMode members. */
     CompetitionBot  robot   = new CompetitionBot(telemetry, this);
