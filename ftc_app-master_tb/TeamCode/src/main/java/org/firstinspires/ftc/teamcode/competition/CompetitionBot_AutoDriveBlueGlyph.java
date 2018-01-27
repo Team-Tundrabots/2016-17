@@ -53,12 +53,13 @@ public class CompetitionBot_AutoDriveBlueGlyph extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        robot.leftArm.setPower(0.5); // lift raises
+        robot.leftArm.setPower(-0.5); // lift raises
         sleep(2000);
-        robot.leftArm.setPower(0);
         robot.moveClaws(0.5); // open claws
-        robot.leftArm.setPower(-0.5);
+        robot.leftArm.setPower(0);
         sleep(2000);
+        //robot.leftArm.setPower(0.5);
+        //sleep(2000);
         robot.leftArm.setPower(0);
         robot.moveClaws(-0.3);
 

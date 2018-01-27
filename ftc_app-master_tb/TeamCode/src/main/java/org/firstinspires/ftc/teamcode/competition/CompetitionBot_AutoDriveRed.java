@@ -60,7 +60,7 @@ public class CompetitionBot_AutoDriveRed extends LinearOpMode {
 
         String color =  robot.getColorFromCamera();
         if(color != "RED") {
-            robot.turnRight(0.8, 1.0);
+            robot.turnRight(0.6, 1.0);
             robot.tail.setPosition(1);
             robot.moveForward(1.1, 1);
             telemetry.addData("color", "BLUE");
