@@ -55,15 +55,13 @@ public class CompetitionBot_AutoDriveBlue extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        double tailPosition = robot.tail.getPosition();
-//        robot.tail.setPosition(tailPosition -.03);
-        robot.tail.setPosition(0.2);
+        robot.tailDown();
         sleep(1000);
 
         String color =  robot.getColorFromCamera();
         if(color == "RED") {
             robot.turnRight(1.1, 1.0);
-            robot.tail.setPosition(1);
+            robot.tailUp();
             robot.moveBackward(1.5, 1);
             telemetry.addData("color", "RED");
 
@@ -71,13 +69,11 @@ public class CompetitionBot_AutoDriveBlue extends LinearOpMode {
         else
         {
             robot.turnLeft(0.9, 1);
-            robot.tail.setPosition(1);
+            robot.tailUp();
             robot.moveForward(1, 1);
             telemetry.addData("color", "BLUE");
         }
 
-
-        telemetry.addData("tailPosition",  "%.2f", tailPosition);
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);
