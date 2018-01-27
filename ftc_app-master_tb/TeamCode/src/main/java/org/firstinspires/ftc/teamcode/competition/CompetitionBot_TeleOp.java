@@ -83,9 +83,9 @@ public class CompetitionBot_TeleOp extends OpMode{
 
 
         if(gamepad1.a){
-            robot.tail.setPosition(1);
+            robot.tailUp();
         } else if(gamepad1.b){
-            robot.tail.setPosition(0.2);
+            robot.tailDown();
         }
         // move arm up if a button pushed
         if(gamepad1.right_trigger > 0){

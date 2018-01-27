@@ -44,6 +44,7 @@ public class CompetitionBot extends CameraBot
     /* Public OpMode members. */
     //   public DcMotor  newMotor    = null;
     public Servo    tail    = null;
+    boolean tailIsDown = false;
 
     public CompetitionBot(Telemetry atelemetry) {
         super(atelemetry);
@@ -62,10 +63,35 @@ public class CompetitionBot extends CameraBot
         // newMotor = initMotor(hwMap, "new_motor");
 
         // Define and initialize ALL installed servos.
-        tail = initServo(hwMap, "tail", 0);
+        tail = initServo(hwMap, "tail", 0.5);
 
     }
 
+    public void tailDown(){
+        if (!tailIsDown) {
+            tail.setPosition(0);
+            sleep(400);
+            tail.setPosition(0.5);
+            tailIsDown = true;
+        }
+    }
 
- }
+    public void tailUp(){
+        if (tailIsDown) {
+            tail.setPosition(1);
+            sleep(400);
+            tail.setPosition(0.5);
+            tailIsDown = false;
+        }
+    }
+
+    public final void sleep(long milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+}
 

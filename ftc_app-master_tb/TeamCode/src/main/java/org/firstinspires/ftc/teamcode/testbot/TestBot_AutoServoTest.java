@@ -53,14 +53,17 @@ public class TestBot_AutoServoTest extends LinearOpMode {
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
-
+        robot.tailDown();
+        sleep(1000);
+        robot.tailUp();
+        /*
         telemetry.addData("startPosition", "%.2f", robot.tail.getPosition());
-        setTailPostion(0.9);
-        telemetry.addData("setPosition", "%.2f", robot.tail.getPosition());
-        sleep(5000);
         setTailPostion(0);
+        telemetry.addData("setPosition", "%.2f", robot.tail.getPosition());
+        sleep(100);
+        setTailPostion(1);
         telemetry.addData("endPosition", "%.2f", robot.tail.getPosition());
-
+*/
         //telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);

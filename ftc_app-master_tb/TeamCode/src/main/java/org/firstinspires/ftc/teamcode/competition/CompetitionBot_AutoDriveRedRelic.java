@@ -53,15 +53,13 @@ public class CompetitionBot_AutoDriveRedRelic extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        double tailPosition = robot.tail.getPosition();
-//        robot.tail.setPosition(tailPosition -.03);
-        robot.tail.setPosition(0.2);
+        robot.tailDown();
         sleep(1000);
 
         String color =  robot.getColorFromCamera();
         if(color != "RED") {
             robot.turnRight(0.8, 1.0);
-            robot.tail.setPosition(1);
+            robot.tailUp();
             robot.moveForward(1.1, 1);
             telemetry.addData("color", "BLUE");
 
@@ -69,13 +67,12 @@ public class CompetitionBot_AutoDriveRedRelic extends LinearOpMode {
         else
         {
             robot.turnLeft(1.2, 1);
-            robot.tail.setPosition(1);
+            robot.tailUp();
             robot.moveBackward(1.3, 1);
             telemetry.addData("color", "RED");
         }
 
 
-        telemetry.addData("tailPosition",  "%.2f", tailPosition);
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);
