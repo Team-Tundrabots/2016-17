@@ -57,7 +57,7 @@ public class CompetitionBot_AutoDriveBlue extends LinearOpMode {
 
         double tailPosition = robot.tail.getPosition();
 //        robot.tail.setPosition(tailPosition -.03);
-        robot.tail.setPosition(-0.2);
+        robot.tail.setPosition(0.2);
         sleep(1000);
 
         String color =  robot.getColorFromCamera();
