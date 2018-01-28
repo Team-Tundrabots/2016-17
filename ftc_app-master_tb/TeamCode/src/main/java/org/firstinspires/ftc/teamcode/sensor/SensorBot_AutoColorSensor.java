@@ -37,7 +37,7 @@ import org.firstinspires.ftc.teamcode.testbot.TestBot;
 
 
 @Autonomous(name="SensorBot: AutoColorSensor", group="test")
-//@Disabled
+@Disabled
 
 public class SensorBot_AutoColorSensor extends LinearOpMode {
 
