@@ -30,11 +30,12 @@
 package org.firstinspires.ftc.teamcode.competition;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
 @Autonomous(name="CompetitionBot: AutoDriveBlueGlyph", group="competition")
-//@Disabled
+@Disabled
 public class CompetitionBot_AutoDriveBlueGlyph extends LinearOpMode {
 
     /* Declare OpMode members. */

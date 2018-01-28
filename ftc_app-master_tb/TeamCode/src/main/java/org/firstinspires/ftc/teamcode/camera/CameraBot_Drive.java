@@ -2,6 +2,7 @@
 
 package org.firstinspires.ftc.teamcode.camera;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -11,7 +12,7 @@ import sample_camera_opmodes.DetectColor;
 
 
 @TeleOp(name="CameraBot: Drive", group="camera")
-
+@Disabled
 public class CameraBot_Drive extends OpMode{
 
     /* Declare OpMode members. */
