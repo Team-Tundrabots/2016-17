@@ -35,7 +35,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
 @Autonomous(name="CompetitionBot: AutoDriveBlueGlyph", group="competition")
-@Disabled
+//@Disabled
+
 public class CompetitionBot_AutoDriveBlueGlyph extends LinearOpMode {
 
     /* Declare OpMode members. */
@@ -54,16 +55,10 @@ public class CompetitionBot_AutoDriveBlueGlyph extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        robot.leftArm.setPower(-0.5); // lift raises
-        sleep(2000);
-        robot.moveClaws(0.5); // open claws
-        robot.leftArm.setPower(0);
-        sleep(2000);
-        //robot.leftArm.setPower(0.5);
-        //sleep(2000);
-        robot.leftArm.setPower(0);
-        robot.moveClaws(-0.3);
-
+        robot.armUp();
+        robot.clawsOpen();
+        robot.armDown();
+        robot.clawsClose();
 
         robot.tailDown();
         sleep(1000);
@@ -80,7 +75,9 @@ public class CompetitionBot_AutoDriveBlueGlyph extends LinearOpMode {
         {
             robot.turnLeft(0.9, 1);
             robot.tailUp();
-            robot.moveForward(1, 1);
+            robot.moveForward(1.3, 1);
+            robot.clawsOpen(); //open claws
+            robot.moveBackward(0.1, 1);// back up after dropping glyph
             telemetry.addData("color", "BLUE");
         }
 

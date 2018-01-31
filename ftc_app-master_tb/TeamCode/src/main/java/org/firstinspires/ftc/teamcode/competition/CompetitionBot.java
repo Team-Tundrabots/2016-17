@@ -85,6 +85,26 @@ public class CompetitionBot extends CameraBot
         }
     }
 
+    public void armUp()
+    {
+        leftArm.setPower(-0.5);
+        sleep(2000);
+        leftArm.setPower(0);
+    }
+
+    public void armDown(){
+        leftArm.setPower(0.5);
+        sleep(1500);
+        leftArm.setPower(0);
+    }
+
+    public void clawsOpen(){
+        moveClaws(-0.3);
+    }
+
+    public void clawsClose(){
+        moveClaws(0.3);
+    }
     public final void sleep(long milliseconds) {
         try {
             Thread.sleep(milliseconds);
