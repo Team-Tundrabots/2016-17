@@ -65,19 +65,27 @@ public class CompetitionBot_AutoDriveBlueGlyph extends LinearOpMode {
 
         String color =  robot.getColorFromCamera();
         if(color == "RED") {
-            robot.turnRight(1.1, 1.0);
+            robot.turnRight(0.3, 1.0);
             robot.tailUp();
-            robot.moveBackward(1.5, 1);
+            sleep(1000);
+            robot.turnLeft(0.3,1.0); //back to where we started
+            sleep(1000);
+            robot.moveForward(0.1, 1);
+            sleep(1000);
+            robot.turnLeft(0.7, 1);
+            robot.moveForward(1.5, 1);
+            robot.clawsOpen(); //open claws
+            robot.moveBackward(0.2, 1);// back up after dropping glyph
             telemetry.addData("color", "RED");
 
         }
         else
         {
-            robot.turnLeft(0.9, 1);
+            robot.turnLeft(0.55, 1);
             robot.tailUp();
             robot.moveForward(1.3, 1);
             robot.clawsOpen(); //open claws
-            robot.moveBackward(0.1, 1);// back up after dropping glyph
+            robot.moveBackward(0.2, 1);// back up after dropping glyph
             telemetry.addData("color", "BLUE");
         }
 
