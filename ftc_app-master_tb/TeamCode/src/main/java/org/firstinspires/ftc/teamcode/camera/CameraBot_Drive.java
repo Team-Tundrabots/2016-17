@@ -12,7 +12,7 @@ import sample_camera_opmodes.DetectColor;
 
 
 @TeleOp(name="CameraBot: Drive", group="camera")
-@Disabled
+//@Disabled
 public class CameraBot_Drive extends OpMode{
 
     /* Declare OpMode members. */
