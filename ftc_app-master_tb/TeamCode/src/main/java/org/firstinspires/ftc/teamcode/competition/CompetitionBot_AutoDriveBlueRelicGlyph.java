@@ -65,11 +65,11 @@ public class CompetitionBot_AutoDriveBlueRelicGlyph extends LinearOpMode {
 
         String color =  robot.getColorFromCamera();
         if(color != "RED") {
-            robot.turnLeft(0.8, 1.0);
+            robot.turnLeft(0.7, 1.0);
             robot.tailUp();
-            robot.moveForward(1.1, 1);
+            robot.moveForward(0.9, 1);
             sleep(1000);
-            robot.turnLeft(1, 1);
+            robot.turnLeft(0.8, 1);
             sleep(1000);
             robot.moveForward(1, 1);
             sleep(1000);
@@ -91,7 +91,7 @@ public class CompetitionBot_AutoDriveBlueRelicGlyph extends LinearOpMode {
             sleep(1000);
             robot.moveForward(1.1, 1);
             sleep(1000);
-            robot.turnLeft(1, 1);
+            robot.turnLeft(0.9, 1);
             sleep(1000);
             robot.moveForward(0.5, 0.8);
             sleep(1000);

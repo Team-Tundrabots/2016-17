@@ -166,9 +166,9 @@ public class SimpleBot {
 
     }
 
-    public void moveClaws(double clawOffset) {
+    public void moveClaws(double offset) {
         // Move both servos to new position.  Assume servos are mirror image of each other.
-        clawOffset = Range.clip(clawOffset, -0.5, 0.5);
+        double clawOffset = Range.clip(offset, -0.5, 0.5);
         if (leftClaw != null)
             leftClaw.setPosition(0.5 + clawOffset);
         if (rightClaw != null)
@@ -176,9 +176,9 @@ public class SimpleBot {
 
     }
 
-    public void moveTopClaws(double clawOffset) {
+    public void moveTopClaws(double offset) {
         // Move both servos to new position.  Assume servos are mirror image of each other.
-        clawOffset = Range.clip(clawOffset, -0.5, 0.5);
+        double clawOffset = Range.clip(offset, -0.5, 0.5);
         if (leftClaw2 != null)
             leftClaw2.setPosition(0.5 + clawOffset);
         if (rightClaw2 != null)
