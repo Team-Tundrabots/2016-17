@@ -53,6 +53,8 @@ public class SimpleBot {
 
     public Servo leftClaw = null;
     public Servo rightClaw = null;
+    public Servo rightClaw2 = null;
+    public Servo leftClaw2 = null;
 
 
     /* local OpMode members. */
@@ -93,6 +95,10 @@ public class SimpleBot {
         // Define and initialize ALL installed servos.
         rightClaw = initServo(hwMap, "right_claw", 0);
         leftClaw = initServo(hwMap, "left_claw", 1.1);
+
+        // Define and initialize ALL installed servos.
+        rightClaw2 = initServo(hwMap, "right_claw2", 0);
+        leftClaw2 = initServo(hwMap, "left_claw2", 1.1);
     }
 
 
@@ -167,6 +173,22 @@ public class SimpleBot {
             leftClaw.setPosition(0.5 + clawOffset);
         if (rightClaw != null)
             rightClaw.setPosition(0.5 - clawOffset);
+
+    }
+
+    public void moveTopClaws(double clawOffset) {
+        // Move both servos to new position.  Assume servos are mirror image of each other.
+        clawOffset = Range.clip(clawOffset, -0.5, 0.5);
+        if (leftClaw2 != null)
+            leftClaw2.setPosition(0.5 + clawOffset);
+        if (rightClaw2 != null)
+            rightClaw2.setPosition(0.5 - clawOffset);
+
+    }
+
+    public void moveBothClaws(double clawOffset) {
+        moveClaws(clawOffset);
+        moveTopClaws(clawOffset);
 
     }
 

@@ -106,7 +106,7 @@ public class CompetitionBot_TeleOp extends OpMode{
         else if (gamepad1.dpad_down)
             clawOffset -= CLAW_SPEED;
 
-        robot.moveClaws(clawOffset);
+        robot.moveBothClaws(clawOffset);
     }
 
     /*
