@@ -33,10 +33,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 
-@Autonomous(name="CompetitionBot: AutoDriveRedGlyph", group="competition")
+@Autonomous(name="CompetitionBot: AutoDriveBlueRelicGlyph", group="competition")
 //@Disabled
-
-public class CompetitionBot_AutoDriveRedGlyph extends LinearOpMode {
+public class CompetitionBot_AutoDriveBlueRelicGlyph extends LinearOpMode {
 
     /* Declare OpMode members. */
     CompetitionBot  robot   = new CompetitionBot(telemetry, this);
@@ -58,37 +57,53 @@ public class CompetitionBot_AutoDriveRedGlyph extends LinearOpMode {
         robot.clawsOpen();
         robot.armDown();
         robot.clawsClose();
+        robot.armUpAfterGlyph();
+
 
         robot.tailDown();
         sleep(1000);
 
         String color =  robot.getColorFromCamera();
         if(color != "RED") {
-            robot.turnRight(0.7, 1.0);
+            robot.turnLeft(0.8, 1.0);
             robot.tailUp();
+            robot.moveForward(1.1, 1);
             sleep(1000);
-            robot.moveForward(1.5, 1);
-            robot.clawsOpen(); //open claws
-            robot.moveBackward(0.2, 1);// back up after dropping glyph
+            robot.turnLeft(1, 1);
+            sleep(1000);
+            robot.moveForward(1, 1);
+            sleep(1000);
+            robot.clawsOpen();
+            robot.moveBackward(0.14, 1);
+            sleep(1000);
             telemetry.addData("color", "BLUE");
 
         }
         else
         {
-            robot.turnLeft(0.3, 1.0);
+            robot.turnRight(0.3, 1);
             robot.tailUp();
-            sleep(1000);
-            robot.turnRight(0.3,1.0); //back to where we started
+            robot.turnLeft(0.3, 1);
             sleep(1000);
             robot.moveForward(0.1, 1);
+            robot.sleep(1000);
+            robot.turnLeft(0.8, 1.0);
             sleep(1000);
-            robot.turnRight(0.75, 1); //after test look here for possible accuracy changes initial change 0.55 -> 0.75
-            robot.moveForward(1.5, 1);
-            robot.clawsOpen(); //open claws
-            robot.moveBackward(0.2, 1);// back up after droppi  ng glyph
+            robot.moveForward(1.1, 1);
+            sleep(1000);
+            robot.turnLeft(1, 1);
+            sleep(1000);
+            robot.moveForward(0.5, 0.8);
+            sleep(1000);
+            robot.clawsOpen();
+            robot.moveBackward(0.3, 1);
+            sleep(1000);
             telemetry.addData("color", "RED");
         }
-        
 
+
+        telemetry.addData("Path", "Complete");
+        telemetry.update();
+        sleep(1000);
     }
 }
