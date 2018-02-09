@@ -92,6 +92,13 @@ public class CompetitionBot extends CameraBot
         leftArm.setPower(0);
     }
 
+    public void armUpAfterGlyph()
+    {
+        leftArm.setPower(-0.07);
+        sleep(2000);
+        leftArm.setPower(0);
+    }
+
     public void armDown(){
         leftArm.setPower(0.5);
         sleep(1500);
