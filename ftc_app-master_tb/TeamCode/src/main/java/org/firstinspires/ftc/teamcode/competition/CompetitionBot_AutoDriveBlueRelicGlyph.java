@@ -69,12 +69,12 @@ public class CompetitionBot_AutoDriveBlueRelicGlyph extends LinearOpMode {
             robot.tailUp();
             robot.moveForward(0.9, 1);
             sleep(1000);
-            robot.turnLeft(0.8, 1);
+            robot.turnLeft(0.95, 1);
             sleep(1000);
             robot.moveForward(1, 1);
             sleep(1000);
             robot.clawsOpen();
-            robot.moveBackward(0.14, 1);
+            robot.moveBackward(0.25, 1);
             sleep(1000);
             telemetry.addData("color", "BLUE");
 

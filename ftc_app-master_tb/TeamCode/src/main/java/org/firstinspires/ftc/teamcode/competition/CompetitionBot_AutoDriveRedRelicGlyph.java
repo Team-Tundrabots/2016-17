@@ -69,12 +69,12 @@ public class CompetitionBot_AutoDriveRedRelicGlyph extends LinearOpMode {
             robot.tailUp();
             robot.moveForward(1.1, 1);
             sleep(1000);
-            robot.turnRight(1, 1);
+            robot.turnRight(0.95, 1);
             sleep(1000);
             robot.moveForward(1, 1);
             sleep(1000);
             robot.clawsOpen();
-            robot.moveBackward(0.14, 1);
+            robot.moveBackward(0.25, 1);
             sleep(1000);
             telemetry.addData("color", "BLUE");
 
@@ -87,11 +87,11 @@ public class CompetitionBot_AutoDriveRedRelicGlyph extends LinearOpMode {
             sleep(1000);
             robot.moveForward(0.1, 1);
             robot.sleep(1000);
-            robot.turnRight(0.8, 1.0);
+            robot.turnRight(0.8, 1);
             sleep(1000);
-            robot.moveForward(1.1, 1);
+            robot.moveForward(1, 1);
             sleep(1000);
-            robot.turnRight(1, 1);
+            robot.turnRight(0.9, 1);
             sleep(1000);
             robot.moveForward(0.5, 0.8);
             sleep(1000);
