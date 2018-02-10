@@ -67,7 +67,7 @@ public class CompetitionBot_AutoDriveRedGlyph extends LinearOpMode {
             robot.turnRight(0.7, 1.0);
             robot.tailUp();
             sleep(1000);
-            robot.moveForward(1.5, 1);
+            robot.moveForward(3, 0.5);
             robot.clawsOpen(); //open claws
             robot.moveBackward(0.2, 1);// back up after dropping glyph
             telemetry.addData("color", "BLUE");
@@ -82,8 +82,8 @@ public class CompetitionBot_AutoDriveRedGlyph extends LinearOpMode {
             sleep(1000);
             robot.moveForward(0.1, 1);
             sleep(1000);
-            robot.turnRight(0.75, 1); //after test look here for possible accuracy changes initial change 0.55 -> 0.75
-            robot.moveForward(1.5, 1);
+            robot.turnRight(0.65, 1); //after test look here for possible accuracy changes initial change 0.55 -> 0.75
+            robot.moveForward(3,0.5);
             robot.clawsOpen(); //open claws
             robot.moveBackward(0.2, 1);// back up after droppi  ng glyph
             telemetry.addData("color", "RED");
