@@ -72,8 +72,8 @@ public class CompetitionBot_AutoDriveBlueGlyph extends LinearOpMode {
             sleep(1000);
             robot.moveForward(0.1, 1);
             sleep(1000);
-            robot.turnLeft(0.7, 1);
-            robot.moveForward(1.5, 1);
+            robot.turnLeft(0.6, 1);
+            robot.moveForward(2.5, 0.5);
             robot.clawsOpen(); //open claws
             robot.moveBackward(0.2, 1);// back up after dropping glyph
             telemetry.addData("color", "RED");
@@ -83,7 +83,7 @@ public class CompetitionBot_AutoDriveBlueGlyph extends LinearOpMode {
         {
             robot.turnLeft(0.55, 1);
             robot.tailUp();
-            robot.moveForward(1.3, 1);
+            robot.moveForward(2.6, 0.5);
             robot.clawsOpen(); //open claws
             robot.moveBackward(0.2, 1);// back up after dropping glyph
             telemetry.addData("color", "BLUE");

@@ -71,7 +71,7 @@ public class CompetitionBot_AutoDriveRedRelicGlyph extends LinearOpMode {
             sleep(1000);
             robot.turnRight(0.95, 1);
             sleep(1000);
-            robot.moveForward(1, 1);
+            robot.moveForward(2, 0.5);
             sleep(1000);
             robot.clawsOpen();
             robot.moveBackward(0.25, 1);
@@ -93,7 +93,7 @@ public class CompetitionBot_AutoDriveRedRelicGlyph extends LinearOpMode {
             sleep(1000);
             robot.turnRight(0.9, 1);
             sleep(1000);
-            robot.moveForward(0.5, 0.8);
+            robot.moveForward(1, 0.4);
             sleep(1000);
             robot.clawsOpen();
             robot.moveBackward(0.3, 1);
