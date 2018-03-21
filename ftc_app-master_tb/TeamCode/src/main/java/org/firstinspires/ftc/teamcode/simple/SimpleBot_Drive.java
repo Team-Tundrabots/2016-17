@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.util.Range;
 
 
 @TeleOp(name="SimpleBot: Drive", group="simple")
-@Disabled
+//@Disabled
 
 public class SimpleBot_Drive extends OpMode{
 
@@ -61,11 +61,13 @@ public class SimpleBot_Drive extends OpMode{
 
         robot.updateMotorsTankDrive(leftY, rightY);
 
+        double position = robot.leftDrive.getCurrentPosition();
         // Send telemetry message to signify robot running;
         telemetry.addData("leftX", "%.2f", leftX);
         telemetry.addData("leftY", "%.2f", leftY);
         telemetry.addData("rightX", "%.2f", rightX);
         telemetry.addData("rightY", "%.2f", rightY);
+        telemetry.addData("encoder", "%.2f", position);
 
         // Use dpad to open and close the claw
         if (gamepad1.dpad_up)
@@ -73,7 +75,7 @@ public class SimpleBot_Drive extends OpMode{
         else if (gamepad1.dpad_down)
             clawOffset -= CLAW_SPEED;
 
-        robot.moveClaws(clawOffset);
+        //robot.moveClaws(clawOffset);
 
     }
 

@@ -56,7 +56,6 @@ public class SimpleBot {
     public Servo rightClaw2 = null;
     public Servo leftClaw2 = null;
 
-
     /* local OpMode members. */
     HardwareMap hwMap = null;
     Telemetry telemetry = null;
@@ -90,15 +89,17 @@ public class SimpleBot {
         leftDrive2 = initMotor(hwMap, "left_drive2", DcMotor.Direction.REVERSE);
         rightDrive2 = initMotor(hwMap, "right_drive2");
 
-        leftArm = initMotor(hwMap, "left_arm");
+
+        //leftArm = initMotor(hwMap, "left_arm");
 
         // Define and initialize ALL installed servos.
-        rightClaw = initServo(hwMap, "right_claw", 0);
-        leftClaw = initServo(hwMap, "left_claw", 1.1);
+        //rightClaw = initServo(hwMap, "right_claw", 0);
+        //leftClaw = initServo(hwMap, "left_claw", 1.1);
 
         // Define and initialize ALL installed servos.
-        rightClaw2 = initServo(hwMap, "right_claw2", 0);
-        leftClaw2 = initServo(hwMap, "left_claw2", 1.1);
+        //rightClaw2 = initServo(hwMap, "right_claw2", 0);
+        //leftClaw2 = initServo(hwMap, "left_claw2", 1.1);
+
     }
 
 
