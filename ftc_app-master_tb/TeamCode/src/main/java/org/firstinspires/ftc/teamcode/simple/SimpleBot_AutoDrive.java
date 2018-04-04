@@ -38,7 +38,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 
 
 @Autonomous(name="SimpleBot: AutoDrive", group="simple")
-@Disabled
+//@Disabled
 public class SimpleBot_AutoDrive extends LinearOpMode {
 
     /* Declare OpMode members. */
@@ -56,16 +56,69 @@ public class SimpleBot_AutoDrive extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        double forwardPower = 0.6;
-        double turnPower = 0.3;
-
-        for (int i = 0; i < 4; i++) {
-            robot.moveForward(1.0, forwardPower);
-            robot.wait(1.0); // wait for 1 second
-            robot.turnLeft(0.5, turnPower);
-            robot.wait(1.0); // wait for 1 second
+        double position = robot.leftDrive.getCurrentPosition();
+        double position2 = robot.rightDrive.getCurrentPosition();
+        for (int i = 0; i < 10; i++) {
+            telemetry.addData("encoder", "%.2f", position);
+            robot.leftDrive.setTargetPosition(-1000);
+            robot.leftDrive.setPower(1.0);
         }
-
+        for (int i = 0; i < 10; i++) {
+            telemetry.addData("encoder", "%.2f", position2);
+            robot.rightDrive.setTargetPosition(-1000);
+            robot.rightDrive.setPower(1.0);
+        }
+        sleep(2000);
+        for (int i = 0; i < 10; i++) {
+            telemetry.addData("encoder", "%.2f", position2);
+            robot.rightDrive.setTargetPosition(-800);
+            robot.rightDrive.setPower(1.0);
+        }
+        sleep(2000);
+        for (int i = 0; i < 10; i++) {
+            telemetry.addData("encoder", "%.2f", position);
+            robot.leftDrive.setTargetPosition(-1000);
+            robot.leftDrive.setPower(1.0);
+        }
+        for (int i = 0; i < 10; i++) {
+            telemetry.addData("encoder", "%.2f", position2);
+            robot.rightDrive.setTargetPosition(-1000);
+            robot.rightDrive.setPower(1.0);
+        }
+        sleep(2000);
+        for (int i = 0; i < 10; i++) {
+            telemetry.addData("encoder", "%.2f", position2);
+            robot.rightDrive.setTargetPosition(-800);
+            robot.rightDrive.setPower(1.0);
+        }
+        sleep(2000);
+        for (int i = 0; i < 10; i++) {
+            telemetry.addData("encoder", "%.2f", position);
+            robot.leftDrive.setTargetPosition(-1000);
+            robot.leftDrive.setPower(1.0);
+        }
+        for (int i = 0; i < 10; i++) {
+            telemetry.addData("encoder", "%.2f", position2);
+            robot.rightDrive.setTargetPosition(-1000);
+            robot.rightDrive.setPower(1.0);
+        }
+        sleep(2000);
+        for (int i = 0; i < 10; i++) {
+            telemetry.addData("encoder", "%.2f", position2);
+            robot.rightDrive.setTargetPosition(-800);
+            robot.rightDrive.setPower(1.0);
+        }
+        sleep(2000);
+        for (int i = 0; i < 10; i++) {
+            telemetry.addData("encoder", "%.2f", position);
+            robot.leftDrive.setTargetPosition(-1000);
+            robot.leftDrive.setPower(1.0);
+        }
+        for (int i = 0; i < 10; i++) {
+            telemetry.addData("encoder", "%.2f", position2);
+            robot.rightDrive.setTargetPosition(-1000);
+            robot.rightDrive.setPower(1.0);
+        }
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);

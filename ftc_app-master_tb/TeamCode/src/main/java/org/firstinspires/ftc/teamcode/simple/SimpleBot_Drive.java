@@ -67,7 +67,13 @@ public class SimpleBot_Drive extends OpMode{
         telemetry.addData("leftY", "%.2f", leftY);
         telemetry.addData("rightX", "%.2f", rightX);
         telemetry.addData("rightY", "%.2f", rightY);
-        telemetry.addData("encoder", "%.2f", position);
+        if(gamepad1.a)
+        {
+            telemetry.addData("encoder", "%.2f", position);
+            robot.leftDrive.setTargetPosition(-1000);
+            robot.leftDrive.setPower(1.0);
+
+        }
 
         // Use dpad to open and close the claw
         if (gamepad1.dpad_up)
