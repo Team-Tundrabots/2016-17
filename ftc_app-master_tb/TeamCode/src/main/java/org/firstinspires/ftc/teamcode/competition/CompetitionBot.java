@@ -109,7 +109,7 @@ public class CompetitionBot extends CameraBot
         moveClaws(-0.3);
     }
     public void clawsCenter() {
-        moveBothClaws(-0.3o);
+        moveBothClaws(-0.3);
     }
 
     public void clawsClose(){
